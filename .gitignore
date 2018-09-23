@@ -1,0 +1,7 @@
+.emacs.desktop
+auto-save-list/*
+bookmarks
+*~
+ac-comphist.dat
+ido.last
+recentf
