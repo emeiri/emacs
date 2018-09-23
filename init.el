@@ -110,43 +110,48 @@
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(package-selected-packages
    (quote
-    (ace-window tabbar-ruler org-bullets which-key try use-package solarized-theme magit auto-complete-c-headers ac-c-headers))))
+    (yasnippet-snippets yasnippet ace-window tabbar-ruler org-bullets which-key try use-package solarized-theme magit auto-complete-c-headers ac-c-headers))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))
 
 (require 'ac-c-headers)
 (require 'auto-complete)
+(require 'auto-complete-config)
+(ac-config-default)
 ; do default config for auto-complete
 (add-hook 'c-mode-hook
             (lambda ()
               (add-to-list 'ac-sources 'ac-source-c-headers)
               (add-to-list 'ac-sources 'ac-source-c-header-symbols t)))
 
+(require 'yasnippet)
+(yas-reload-all)
+(add-hook 'c-mode-hook #'yas-minor-mode)
 
-(defun my:ac-c-header-init ()
-  (add-to-list 'ac-sources 'ac-source-c-headers)
-  (add-to-list 'achead:include-directories '"/usr/include/c++/4.8
- /usr/include/x86_64-linux-gnu/c++/4.8
- /usr/include/c++/4.8/backward
- /usr/lib/gcc/x86_64-linux-gnu/4.8/include
- /usr/local/include
- /usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed
- /usr/include/x86_64-linux-gnu
- /usr/include
-"))
+;(defun my:ac-c-header-init ()
+;  (add-to-list 'ac-sources 'ac-source-c-headers)
+;  (add-to-list 'achead:include-directories '"/usr/include/c++/4.8
+; /usr/include/x86_64-linux-gnu/c++/4.8
+; /usr/include/c++/4.8/backward
+; /usr/lib/gcc/x86_64-linux-gnu/4.8/include
+; /usr/local/include
+; /usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed
+; /usr/include/x86_64-linux-gnu
+; /usr/include"))
 ; now let's call this funcion from c/c++ hooks
-(add-hook 'c++-mode-hook 'my:ac-c-header-init)
-(add-hook 'c-mode-hook 'my:ac-c-header-init)
+;(add-hook 'c++-mode-hook 'my:ac-c-header-init)
+;(add-hook 'c-mode-hook 'my:ac-c-header-init)
 
 
-(setq tabbar-ruler-global-tabbar t)    ; get tabbar
-(setq tabbar-ruler-global-ruler nil)   ; get global ruler
-(setq tabbar-ruler-popup-menu t)       ; get popup menu.
-(setq tabbar-ruler-popup-toolbar t)    ; get popup toolbar
-(setq tabbar-ruler-popup-scrollbar t)  ; show scroll-bar on mouse-move
-(require 'tabbar-ruler)
+;(setq tabbar-ruler-global-tabbar t)    ; get tabbar
+;(setq tabbar-ruler-global-ruler nil)   ; get global ruler
+;(setq tabbar-ruler-popup-menu t)       ; get popup menu.
+;(setq tabbar-ruler-popup-toolbar t)    ; get popup toolbar
+;(setq tabbar-ruler-popup-scrollbar t)  ; show scroll-bar on mouse-move
+;(require 'tabbar-ruler)
 
+(set-face-attribute 'default nil :height 150)
