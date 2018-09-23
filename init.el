@@ -157,3 +157,6 @@
 (require 'iedit)
 
 (global-flycheck-mode)
+(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
+
+(global-linum-mode t)
