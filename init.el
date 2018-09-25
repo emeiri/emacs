@@ -160,3 +160,14 @@
 (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
 
 (global-linum-mode t)
+
+(require 'cc-mode)
+(require 'semantic)
+(global-semanticdb-minor-mode 1)
+(global-semantic-idle-scheduler-mode 1)
+(semantic-mode 1)
+
+(defun my::add-semantic-to-ac()
+  (add-to-list 'ac-sources 'ac-source-semantic))
+
+(add-hook 'c-mode-common-hook 'my::add-semantic-to-ac)
