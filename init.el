@@ -14,6 +14,7 @@
 
 ;; when a file is updated outside emacs, make it update if it's already opened in emacs
 (global-auto-revert-mode 1)
+(normal-erase-is-backspace-mode 1)
 
 ;(setq ido-enable-flex-matching t)
 ;(setq ido-everywhere t)
@@ -171,3 +172,10 @@
   (add-to-list 'ac-sources 'ac-source-semantic))
 
 (add-hook 'c-mode-common-hook 'my::add-semantic-to-ac)
+
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+              (ggtags-mode 1))))
+
+(global-set-key (kbd "C-<f9>") 'compile)
