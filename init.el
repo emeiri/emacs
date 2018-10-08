@@ -14,7 +14,6 @@
 
 ;; when a file is updated outside emacs, make it update if it's already opened in emacs
 (global-auto-revert-mode 1)
-(normal-erase-is-backspace-mode 1)
 
 ;(setq ido-enable-flex-matching t)
 ;(setq ido-everywhere t)
@@ -111,7 +110,7 @@
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(package-selected-packages
    (quote
-    (flycheck iedit yasnippet-snippets yasnippet ace-window tabbar-ruler org-bullets which-key try use-package solarized-theme magit auto-complete-c-headers ac-c-headers))))
+    (projectile flycheck iedit yasnippet-snippets yasnippet ace-window tabbar-ruler org-bullets which-key try use-package solarized-theme magit auto-complete-c-headers ac-c-headers))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -173,9 +172,5 @@
 
 (add-hook 'c-mode-common-hook 'my::add-semantic-to-ac)
 
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-              (ggtags-mode 1))))
-
-(global-set-key (kbd "C-<f9>") 'compile)
+(global-ede-mode 1)
+(ede-cpp-root-project "ogldev" :file "/home/emeiri/ogldev/tutorial53/tutorial53.cpp" :include-path '("/home/emeiri/ogldev/"))
