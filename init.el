@@ -2,7 +2,7 @@
 (cua-mode 1)
 (electric-pair-mode 1)
 (setq inhibit-startup-message t)
-;(tool-bar-mode -1) doesn't work
+					;(tool-bar-mode -1) doesn't work
 
 ;; turn on highlighting current line
 (global-hl-line-mode 0)
@@ -179,3 +179,8 @@
               (ggtags-mode 1))))
 
 (global-set-key (kbd "C-<f9>") 'compile)
+(setq compilation-ask-about-save nil)
+
+(projectile-mode +1)
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
