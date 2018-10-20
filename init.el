@@ -2,7 +2,7 @@
 (cua-mode 1)
 (electric-pair-mode 1)
 (setq inhibit-startup-message t)
-;(tool-bar-mode -1) doesn't work
+					;(tool-bar-mode -1) doesn't work
 
 ;; turn on highlighting current line
 (global-hl-line-mode 0)
@@ -172,5 +172,19 @@
 
 (add-hook 'c-mode-common-hook 'my::add-semantic-to-ac)
 
+<<<<<<< HEAD
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+              (ggtags-mode 1))))
+
+(global-set-key (kbd "C-<f9>") 'compile)
+(setq compilation-ask-about-save nil)
+
+(projectile-mode +1)
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+=======
 (global-ede-mode 1)
 (ede-cpp-root-project "ogldev" :file "/home/emeiri/ogldev/tutorial53/tutorial53.cpp" :include-path '("/home/emeiri/ogldev/"))
+>>>>>>> 4e09d57547ab2ae7d403920f95e0f935eb9f2469
