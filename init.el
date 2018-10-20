@@ -1,51 +1,39 @@
+;; General
 (set-background-color "honeydew")
 (cua-mode 1)
 (electric-pair-mode 1)
 (setq inhibit-startup-message t)
-					;(tool-bar-mode -1) doesn't work
-
-;; turn on highlighting current line
-(global-hl-line-mode 0)
-
-;; turn on bracket match highlight
-(show-paren-mode 1)
-
-;(global-display-line-numbers-mode)
-
-;; when a file is updated outside emacs, make it update if it's already opened in emacs
-(global-auto-revert-mode 1)
-
-;(setq ido-enable-flex-matching t)
-;(setq ido-everywhere t)
-;(ido-mode 1)
+(global-hl-line-mode 1)                                    ;; turn on highlighting current line
+(show-paren-mode 1)                                        ;; turn on bracket match highlight
+(global-auto-revert-mode 1)                                ;; when a file is updated outside emacs, make it update if it's already opened in emacs
+(desktop-save-mode 1)                                      ;; save/restore opened files
+(set-face-attribute 'default nil :height 150)
+(global-linum-mode 1)                                      ;; show line numbers
 
 ;; keep a list of recently opened files
 (require 'recentf)
 (recentf-mode 1)
 
 ;(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+; defaliases
 (defalias 'list-buffers 'ibuffer)
-
-
-;; save/restore opened files
-(desktop-save-mode 1)
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-; start package.el with emacs
+; MELPA
 (require 'package)
 (setq package-enable-at-startup nil)
 ; add MELPA to repository list
 ;(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
-; initialize package.el
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
 
-(use-package try
-  :ensure t)
+; Packages
+(use-package try :ensure t)
 
 (use-package which-key
   :ensure t
@@ -72,9 +60,7 @@
     ))
 (global-set-key (kbd "M-o") 'ace-window)
 
-(use-package counsel
-  :ensure t
-  )
+(use-package counsel  :ensure t)
 
 (use-package swiper
   :ensure try
@@ -111,6 +97,7 @@
  '(package-selected-packages
    (quote
     (helm-projectile projectile flycheck iedit yasnippet-snippets yasnippet ace-window tabbar-ruler org-bullets which-key try use-package solarized-theme magit auto-complete-c-headers ac-c-headers))))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -152,14 +139,10 @@
 ;(setq tabbar-ruler-popup-scrollbar t)  ; show scroll-bar on mouse-move
 ;(require 'tabbar-ruler)
 
-(set-face-attribute 'default nil :height 150)
-
 (require 'iedit)
 
 (global-flycheck-mode)
 (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
-
-(global-linum-mode t)
 
 (require 'cc-mode)
 (require 'semantic)
@@ -172,19 +155,5 @@
 
 (add-hook 'c-mode-common-hook 'my::add-semantic-to-ac)
 
-<<<<<<< HEAD
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-              (ggtags-mode 1))))
-
-(global-set-key (kbd "C-<f9>") 'compile)
-(setq compilation-ask-about-save nil)
-
-(projectile-mode +1)
-(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
-=======
 (global-ede-mode 1)
 (ede-cpp-root-project "ogldev" :file "/home/emeiri/ogldev/tutorial53/tutorial53.cpp" :include-path '("/home/emeiri/ogldev/"))
->>>>>>> 4e09d57547ab2ae7d403920f95e0f935eb9f2469
