@@ -5,3 +5,7 @@ bookmarks
 ac-comphist.dat
 ido.last
 recentf
+semanticdb/*
+ede-projects.el
+projectile-bookmarks.eld
+.emacs.desktop.lock
