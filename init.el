@@ -17,7 +17,7 @@
 ;(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ; defaliases
-(defalias 'list-buffers 'ibuffer)
+(defalias 'list-buffers 'helm-buffers-list)
 (defalias 'yes-or-no-p 'y-or-n-p)
 
 ; MELPA
@@ -157,3 +157,9 @@
 
 (global-ede-mode 1)
 (ede-cpp-root-project "ogldev" :file "/home/emeiri/ogldev/tutorial53/tutorial53.cpp" :include-path '("/home/emeiri/ogldev/"))
+
+;; HELM
+(require 'helm-config)
+(helm-mode 1)
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
