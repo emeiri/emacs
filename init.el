@@ -10,11 +10,11 @@
 (set-face-attribute 'default nil :height 150)
 (global-linum-mode 1)                                      ;; show line numbers
 
+(global-set-key [delete] 'delete-char)
+
 ;; keep a list of recently opened files
 (require 'recentf)
 (recentf-mode 1)
-
-;(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ; defaliases
 (defalias 'yes-or-no-p 'y-or-n-p)
@@ -97,6 +97,7 @@
    (quote
     (helm-projectile projectile flycheck iedit yasnippet-snippets yasnippet ace-window tabbar-ruler org-bullets which-key try use-package solarized-theme magit auto-complete-c-headers ac-c-headers))))
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(load-theme 'darkokai t)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -176,7 +177,7 @@
 (helm-mode 1)
 
 ;; PROJECTILE
-(projectile-global-mode)
+(projectile-mode)
 (setq projectile-comletion-system 'helm)
 (setq projectile-proect-search-path '("~/"))
 (require 'helm-projectile)
