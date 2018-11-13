@@ -8,8 +8,11 @@
 (global-auto-revert-mode 1)                                ;; when a file is updated outside emacs, make it update if it's already opened in emacs
 (desktop-save-mode 1)                                      ;; save/restore opened files
 (set-face-attribute 'default nil :height 150)
-(global-linum-mode 1)                                      ;; show line numbers
+(global-linum-mode 0)                                      ;; show line numbers
+(setq auto-window-vscroll nil)
+(setq tab-width 4)
 
+;; Global keys
 (global-set-key [delete] 'delete-char)
 
 ;; keep a list of recently opened files
@@ -44,9 +47,9 @@
   :config
   (add-hook 'org-mode-hook (lambda() (org-bullets-mode 1))))
 
-(use-package tabbar
-  :ensure t
-  :config (tabbar-mode 1))
+;(use-package tabbar
+;  :ensure t
+;  :config (tabbar-mode 1))
 
 (use-package ace-window
   :ensure t
@@ -183,3 +186,4 @@
 (require 'helm-projectile)
 (helm-projectile-on)
 (setq projectile-switch-project-action 'helm-projectile)
+(setq projectile-globally-ignored-files '("GTAGS" "GRTAGS"))
