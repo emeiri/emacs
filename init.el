@@ -11,9 +11,15 @@
 (global-linum-mode 0)                                      ;; show line numbers
 (setq auto-window-vscroll nil)
 (setq tab-width 4)
-
+(defvaralias 'c-basic-offset 'tab-width)
 ;; Global keys
 (global-set-key [delete] 'delete-char)
+
+(defun save-all-and-compile ()
+  (save-some-buffers 1)
+  (compile compile-command))
+
+(global-set-key [f5] 'compile)
 
 ;; keep a list of recently opened files
 (require 'recentf)
@@ -95,10 +101,10 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+	("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(package-selected-packages
    (quote
-    (helm-projectile projectile flycheck iedit yasnippet-snippets yasnippet ace-window tabbar-ruler org-bullets which-key try use-package solarized-theme magit auto-complete-c-headers ac-c-headers))))
+	(elpy helm-projectile projectile flycheck iedit yasnippet-snippets yasnippet ace-window tabbar-ruler org-bullets which-key try use-package solarized-theme magit auto-complete-c-headers ac-c-headers))))
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'darkokai t)
 
@@ -166,6 +172,8 @@
 (require 'helm)
 (require 'helm-config)
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "M-x") 'helm-M-x)
 (global-unset-key (kbd "C-x c"))
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB work in terminal
@@ -206,3 +214,5 @@
 (helm-projectile-on)
 (setq projectile-switch-project-action 'helm-projectile)
 (setq projectile-globally-ignored-files '("GTAGS" "GRTAGS"))
+
+(elpy-enable)
