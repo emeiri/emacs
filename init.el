@@ -12,6 +12,11 @@
 (setq auto-window-vscroll nil)
 (setq tab-width 4)
 (defvaralias 'c-basic-offset 'tab-width)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(tooltip-mode -1)
+(menu-bar-mode -1)
+
 ;; Global keys
 (global-set-key [delete] 'delete-char)
 
@@ -41,6 +46,11 @@
   (package-install 'use-package))
 
 ; Packages
+(use-package doom-themes
+  :ensure t
+  :config
+  (load-theme 'doom-one t))
+
 (use-package try :ensure t)
 
 (use-package which-key
@@ -104,7 +114,7 @@
 	("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(package-selected-packages
    (quote
-	(elpy helm-projectile projectile flycheck iedit yasnippet-snippets yasnippet ace-window tabbar-ruler org-bullets which-key try use-package solarized-theme magit auto-complete-c-headers ac-c-headers))))
+    (elpy neotree doom-themes helm-projectile projectile flycheck iedit yasnippet-snippets yasnippet ace-window tabbar-ruler org-bullets which-key try use-package solarized-theme magit auto-complete-c-headers ac-c-headers))))
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'darkokai t)
 
@@ -216,3 +226,13 @@
 (setq projectile-globally-ignored-files '("GTAGS" "GRTAGS"))
 
 (elpy-enable)
+
+;; All The Icons
+(use-package all-the-icons :ensure t)
+
+;; NeoTree
+(use-package neotree
+  :ensure t
+  :init
+  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
+
