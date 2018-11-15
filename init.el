@@ -10,8 +10,8 @@
 (set-face-attribute 'default nil :height 150)
 (global-linum-mode 0)                                      ;; show line numbers
 (setq auto-window-vscroll nil)
-(setq tab-width 4)
-(defvaralias 'c-basic-offset 'tab-width)
+(setq compilation-ask-about-save nil)
+(setq compilation-scroll-output t)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (tooltip-mode -1)
@@ -19,12 +19,33 @@
 
 ;; Global keys
 (global-set-key [delete] 'delete-char)
+										;(global-set-key [f5] 'compile)
+(define-key c-mode-map [C-f9] #'compile) ;; This gives a regular `compile-command' prompt.
+(define-key c++-mode-map [C-f9] #'compile) ;; This gives a regular `compile-command' prompt.
+(define-key c-mode-map [f9]   #'endless/compile-please) ;; This just compiles immediately.
+(define-key c++-mode-map [f9]   #'endless/compile-please) ;; This just compiles immediately.
 
-(defun save-all-and-compile ()
-  (save-some-buffers 1)
-  (compile compile-command))
 
-(global-set-key [f5] 'compile)
+(defcustom endless/compile-window-size 105
+  "Width given to the non-compilation window."
+  :type 'integer
+  :group 'endless)
+
+(defun endless/compile-please (comint)
+  "Compile without confirmation.
+With a prefix argument, use comint-mode."
+  (interactive "P")
+  ;; Do the command without a prompt.
+  (save-window-excursion
+    (compile (eval compile-command) (and comint t)))
+  ;; Create a compile window of the desired width.
+  (pop-to-buffer (get-buffer "*compilation*"))
+  (enlarge-window
+   (- (frame-width)
+      endless/compile-window-size
+      (window-width))
+   'horizontal))
+
 
 ;; keep a list of recently opened files
 (require 'recentf)
@@ -165,6 +186,7 @@
 (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
 
 (require 'cc-mode)
+(setq c-basic-offset 4)
 (require 'semantic)
 (global-semanticdb-minor-mode 1)
 (global-semantic-idle-scheduler-mode 1)
@@ -236,3 +258,4 @@
   :init
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 
+(put 'downcase-region 'disabled nil)
