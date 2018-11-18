@@ -1,5 +1,5 @@
-;; General
-(set-background-color "honeydew")
+; General
+;(set-background-color "black")
 (cua-mode 1)
 (electric-pair-mode 1)
 (setq inhibit-startup-message t)
@@ -11,7 +11,6 @@
 (global-linum-mode 0)                                      ;; show line numbers
 (setq auto-window-vscroll nil)
 (setq compilation-ask-about-save nil)
-(setq compilation-scroll-output t)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (tooltip-mode -1)
@@ -20,12 +19,6 @@
 ;; Global keys
 (global-set-key [delete] 'delete-char)
 										;(global-set-key [f5] 'compile)
-(define-key c-mode-map [C-f9] #'compile) ;; This gives a regular `compile-command' prompt.
-(define-key c++-mode-map [C-f9] #'compile) ;; This gives a regular `compile-command' prompt.
-(define-key c-mode-map [f9]   #'endless/compile-please) ;; This just compiles immediately.
-(define-key c++-mode-map [f9]   #'endless/compile-please) ;; This just compiles immediately.
-
-
 (defcustom endless/compile-window-size 105
   "Width given to the non-compilation window."
   :type 'integer
@@ -185,8 +178,14 @@ With a prefix argument, use comint-mode."
 (global-flycheck-mode)
 (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
 
+;(require 'c-c++-mode)
 (require 'cc-mode)
 (setq c-basic-offset 4)
+(setq compilation-scroll-output t)
+(define-key c-mode-map [C-f9] #'compile) ;; This gives a regular `compile-command' prompt.
+(define-key c++-mode-map [C-f9] #'compile) ;; This gives a regular `compile-command' prompt.
+(define-key c-mode-map [f9]   #'endless/compile-please) ;; This just compiles immediately.
+(define-key c++-mode-map [f9]   #'endless/compile-please) ;; This just compiles immediately.
 (require 'semantic)
 (global-semanticdb-minor-mode 1)
 (global-semantic-idle-scheduler-mode 1)
@@ -203,9 +202,11 @@ With a prefix argument, use comint-mode."
 ;; HELM
 (require 'helm)
 (require 'helm-config)
+(helm-mode 1)
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x b") 'helm-mini)
 (global-unset-key (kbd "C-x c"))
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB work in terminal
@@ -214,12 +215,16 @@ With a prefix argument, use comint-mode."
   (setq helm-google-suggest-use-curl-p t))
 (defalias 'list-buffers 'helm-buffers-list)
 (global-set-key (kbd "C-x b") 'list-buffers)
-(setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
+(setq helm-split-window-inside-p           t ; open helm buffer inside current window, not occupy whole other window
       helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
       helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
       helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
       helm-ff-file-name-history-use-recentf t
-      helm-echo-input-in-header-line t)
+      helm-echo-input-in-header-line t
+	  helm-M-x-fuzzy-match t ;; optional fuzzy matching for helm-M-x
+	  helm-buffers-fuzzy-matching t
+      helm-recentf-fuzzy-match    t)
+	  
 
 (defun spacemacs//helm-hide-minibuffer-maybe ()
   "Hide minibuffer in Helm session if we use the header line as input field."
@@ -236,17 +241,17 @@ With a prefix argument, use comint-mode."
 (setq helm-autoresize-max-height 0)
 (setq helm-autoresize-min-height 20)
 (helm-autoresize-mode 1)
-(helm-mode 1)
 
 ;; PROJECTILE
 (projectile-mode)
-(setq projectile-comletion-system 'helm)
-(setq projectile-proect-search-path '("~/"))
 (require 'helm-projectile)
 (helm-projectile-on)
+(setq projectile-completion-system 'helm)
+(setq projectile-project-search-path '("~/"))
 (setq projectile-switch-project-action 'helm-projectile)
 (setq projectile-globally-ignored-files '("GTAGS" "GRTAGS"))
 (global-set-key (kbd "C-<f1>") 'helm-projectile-find-file-in-known-projects)
+(global-set-key (kbd "C-S-f") 'helm-projectile-ag)
 
 (elpy-enable)
 
