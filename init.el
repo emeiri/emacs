@@ -18,7 +18,7 @@
 
 ;; Global keys
 (global-set-key [delete] 'delete-char)
-
+(global-set-key (kbd "C-0") 'delete-window)
 										;(global-set-key [f5] 'compile)
 (defcustom endless/compile-window-size 105
   "Width given to the non-compilation window."
@@ -126,10 +126,10 @@ With a prefix argument, use comint-mode."
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-	("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(package-selected-packages
    (quote
-	(neotree helm-ag ag elpy helm-projectile projectile flycheck iedit yasnippet-snippets yasnippet ace-window tabbar-ruler org-bullets which-key try use-package solarized-theme magit auto-complete-c-headers ac-c-headers))))
+    (autopair neotree helm-ag ag elpy helm-projectile projectile flycheck iedit yasnippet-snippets yasnippet ace-window tabbar-ruler org-bullets which-key try use-package solarized-theme magit auto-complete-c-headers ac-c-headers))))
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'darkokai t)
 

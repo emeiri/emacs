@@ -1,12 +1,3 @@
-* 
-C-x 4 f			Load file other window
-
-
-C-x C-b 		List the existing buffers (list-buffers).
-C-x o   		Select another window (other-window). 
-C-/
-C-x u
-C-_ 			Undo one entry in the current buffer's undo records (undo).
 
 * Editing
 ** M-1 M-(                      Close parenthesis after next token
@@ -14,6 +5,23 @@ C-_ 			Undo one entry in the current buffer's undo records (undo).
 ** M-;                             Add comment at the end of the current line
 ** C-x C-;                       Comment/Uncomment the current line
 
+** C-_ 			       Undo one entry in the current buffer's undo records (undo).
+* ETags
+** M-. <RET> 		Jump to the tag underneath the cursor
+** M-. <tag> <RET> Search for a particular tag
+** C-u M-.			Find the next definition for the last tag
+** M-,				Pop back to where you previously invoked "M-."
+* Display
+** C-x C-+			Increase font size
+* Helm
+* Movement
+** ESC-<			Move to the top of the buffer (beginning-of-buffer). With numeric argument n, move to n/10 of the way from the top. On graphical displays, C-<HOME> does the same. 
+** ESC->			Move to the bottom of the buffer
+** ALT-g n 		        Goto next error
+** ALT-g p 		        Goto previous error
+** M-f				Jump word forward
+** M-b				Jump word backwards
+* Projectile
 * SEARCH
 ** C-s				Incremental search forward (isearch-forward). 
 ** C-r				Incremental search backward (isearch-backward).
@@ -21,26 +29,6 @@ C-_ 			Undo one entry in the current buffer's undo records (undo).
 ** C-M-s			        Regexp search
 ** A-s o			        Occurances dispaly
 
-* Movement
-** ESC-<			Move to the top of the buffer (beginning-of-buffer). With numeric argument n, move to n/10 of the way from the top. On graphical displays, C-<HOME> does the same. 
-** ESC->			Move to the bottom of the buffer
-** ALT-g n 		        Goto next error
-** ALT-g p 		        Goto previous error
-C-x 0 			Delete the selected window (delete-window). 
-C-x 1 			Delete all windows in the selected frame except the selected window (delete-other-windows). 
-M-f				Jump word forward
-M-b				Jump word backwards
-
-
-* ETags
-M-. <RET> 		Jump to the tag underneath the cursor
-M-. <tag> <RET> Search for a particular tag
-C-u M-.			Find the next definition for the last tag
-M-,				Pop back to where you previously invoked "M-."
-
-* Display
-** C-x C-+			Increase font size
-
-* Helm
-
-* Projectile
+** M-p                             Load previous search string
+* Window
+** C-x o   		Select another window (other-window). 
