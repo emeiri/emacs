@@ -1,8 +1,7 @@
 * 
 C-x 4 f			Load file other window
 
-ALT-g n 		goto next error
-ALT-g p 		goto previous error
+
 C-x C-b 		List the existing buffers (list-buffers).
 C-x o   		Select another window (other-window). 
 C-/
@@ -11,17 +10,22 @@ C-_ 			Undo one entry in the current buffer's undo records (undo).
 
 * Editing
 ** M-1 M-(                      Close parenthesis after next token
+** M-/                             Switch between auto-complete options
+** M-;                             Add comment at the end of the current line
+** C-x C-;                       Comment/Uncomment the current line
 
 * SEARCH
 ** C-s				Incremental search forward (isearch-forward). 
 ** C-r				Incremental search backward (isearch-backward).
 ** C-s C-w			Search word under cursor
-** C-M-s			Regexp search
-** A-s o			Occurances dispaly
+** C-M-s			        Regexp search
+** A-s o			        Occurances dispaly
 
 * Movement
 ** ESC-<			Move to the top of the buffer (beginning-of-buffer). With numeric argument n, move to n/10 of the way from the top. On graphical displays, C-<HOME> does the same. 
 ** ESC->			Move to the bottom of the buffer
+** ALT-g n 		        Goto next error
+** ALT-g p 		        Goto previous error
 C-x 0 			Delete the selected window (delete-window). 
 C-x 1 			Delete all windows in the selected frame except the selected window (delete-other-windows). 
 M-f				Jump word forward
@@ -34,4 +38,9 @@ M-. <tag> <RET> Search for a particular tag
 C-u M-.			Find the next definition for the last tag
 M-,				Pop back to where you previously invoked "M-."
 
-C-x C-+			Increase font size
+* Display
+** C-x C-+			Increase font size
+
+* Helm
+
+* Projectile

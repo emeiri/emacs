@@ -18,6 +18,7 @@
 
 ;; Global keys
 (global-set-key [delete] 'delete-char)
+
 										;(global-set-key [f5] 'compile)
 (defcustom endless/compile-window-size 105
   "Width given to the non-compilation window."
@@ -182,6 +183,9 @@ With a prefix argument, use comint-mode."
 (require 'cc-mode)
 (setq c-basic-offset 4)
 (setq compilation-scroll-output t)
+(setq compilation-skip-threshold 2);                            Skip compilation warnings
+(setq split-height-threshold 0)
+(setq compilation-window-height 10)
 (define-key c-mode-map [C-f9] #'compile) ;; This gives a regular `compile-command' prompt.
 (define-key c++-mode-map [C-f9] #'compile) ;; This gives a regular `compile-command' prompt.
 (define-key c-mode-map [f9]   #'endless/compile-please) ;; This just compiles immediately.
@@ -265,3 +269,4 @@ With a prefix argument, use comint-mode."
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 
 (put 'downcase-region 'disabled nil)
+
