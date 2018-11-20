@@ -22,13 +22,15 @@
 ** M-f				Jump word forward
 ** M-b				Jump word backwards
 * Projectile
-* SEARCH
+* Org mode
+** C-c C-l                        Add link
+** C-c o                          Goto the link
+* Search
 ** C-s				Incremental search forward (isearch-forward). 
 ** C-r				Incremental search backward (isearch-backward).
 ** C-s C-w			Search word under cursor
 ** C-M-s			        Regexp search
 ** A-s o			        Occurances dispaly
-
 ** M-p                             Load previous search string
 * Window
 ** C-x o   		Select another window (other-window). 

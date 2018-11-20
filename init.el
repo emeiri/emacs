@@ -15,6 +15,7 @@
 (scroll-bar-mode -1)
 (tooltip-mode -1)
 (menu-bar-mode -1)
+(which-function-mode 1)
 
 ;; Global keys
 (global-set-key [delete] 'delete-char)
@@ -215,6 +216,8 @@ With a prefix argument, use comint-mode."
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB work in terminal
 (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+(global-set-key (kbd "C-<f2>") 'helm-semantic-or-imenu)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
 (when (executable-find "curl")
   (setq helm-google-suggest-use-curl-p t))
 (defalias 'list-buffers 'helm-buffers-list)
@@ -242,7 +245,7 @@ With a prefix argument, use comint-mode."
 
 (add-hook 'helm-minibuffer-set-up-hook
           'spacemacs//helm-hide-minibuffer-maybe)
-(setq helm-autoresize-max-height 0)
+(setq helm-autoresize-max-height 40)
 (setq helm-autoresize-min-height 20)
 (helm-autoresize-mode 1)
 
