@@ -1,20 +1,22 @@
 ; General
 ;(set-background-color "black")
 (cua-mode 1)
-(electric-pair-mode 1)
-(setq inhibit-startup-message t)
-(global-hl-line-mode 1)                                    ;; turn on highlighting current line
-(show-paren-mode 1)                                        ;; turn on bracket match highlight
-(global-auto-revert-mode 1)                                ;; when a file is updated outside emacs, make it update if it's already opened in emacs
 (desktop-save-mode 1)                                      ;; save/restore opened files
-(set-face-attribute 'default nil :height 150)
+(electric-pair-mode 1)
+(global-auto-revert-mode 1)                                ;; when a file is updated outside emacs, make it update if it's already opened in emacs
+(global-hl-line-mode 1)                                    ;; turn on highlighting current line
 (global-linum-mode 0)                                      ;; show line numbers
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(set-face-attribute 'default nil :height 150)
 (setq auto-window-vscroll nil)
 (setq compilation-ask-about-save nil)
+(setq inhibit-startup-message t)
+(setq visible-bell t)
+(setq-default indent-tabs-mode -1)
+(show-paren-mode 1)                                        ;; turn on bracket match highlight
 (tool-bar-mode -1)
-(scroll-bar-mode -1)
 (tooltip-mode -1)
-(menu-bar-mode -1)
 (which-function-mode 1)
 
 ;; Global keys
@@ -128,6 +130,9 @@ With a prefix argument, use comint-mode."
  '(custom-safe-themes
    (quote
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+ '(helm-grep-ignored-files
+   (quote
+    (".#*" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "*/caffe_pb2.py" "tags" ))
  '(package-selected-packages
    (quote
     (autopair neotree helm-ag ag elpy helm-projectile projectile flycheck iedit yasnippet-snippets yasnippet ace-window tabbar-ruler org-bullets which-key try use-package solarized-theme magit auto-complete-c-headers ac-c-headers))))
@@ -272,4 +277,7 @@ With a prefix argument, use comint-mode."
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 
 (put 'downcase-region 'disabled nil)
+
+(custom-set-variables
+ '(helm-ag-ignore-buffer-patterns '("\\.caffe_pb2\\.py\\'")))
 
