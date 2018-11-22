@@ -20,11 +20,6 @@
 ;; Global keys
 (global-set-key [delete] 'delete-char)
 										;(global-set-key [f5] 'compile)
-(define-key c-mode-map [C-f9] #'compile) ;; This gives a regular `compile-command' prompt.
-(define-key c++-mode-map [C-f9] #'compile) ;; This gives a regular `compile-command' prompt.
-(define-key c-mode-map [f9]   #'endless/compile-please) ;; This just compiles immediately.
-(define-key c++-mode-map [f9]   #'endless/compile-please) ;; This just compiles immediately.
-
 
 (defcustom endless/compile-window-size 105
   "Width given to the non-compilation window."
@@ -132,10 +127,10 @@ With a prefix argument, use comint-mode."
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-	("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
  '(package-selected-packages
    (quote
-	(neotree helm-ag ag elpy helm-projectile projectile flycheck iedit yasnippet-snippets yasnippet ace-window tabbar-ruler org-bullets which-key try use-package solarized-theme magit auto-complete-c-headers ac-c-headers))))
+    (helm-c-yasnippet yasnippet-classic-snippets neotree helm-ag ag elpy helm-projectile projectile flycheck iedit yasnippet-snippets yasnippet ace-window tabbar-ruler org-bullets which-key try use-package solarized-theme magit auto-complete-c-headers ac-c-headers))))
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'darkokai t)
 
@@ -172,6 +167,7 @@ With a prefix argument, use comint-mode."
 (require 'yasnippet)
 (yas-reload-all)
 (add-hook 'c-mode-hook #'yas-minor-mode)
+(add-hook 'cc-mode-hook #'yas-minor-mode)
 
 ;(setq tabbar-ruler-global-tabbar t)    ; get tabbar
 ;(setq tabbar-ruler-global-ruler nil)   ; get global ruler
@@ -187,6 +183,13 @@ With a prefix argument, use comint-mode."
 
 (require 'cc-mode)
 (setq c-basic-offset 4)
+(define-key c-mode-map [C-f9] #'compile) ;; This gives a regular `compile-command' prompt.
+(define-key c++-mode-map [C-f9] #'compile) ;; This gives a regular `compile-command' prompt.
+(define-key c-mode-map [f9]   #'endless/compile-please) ;; This just compiles immediately.
+(define-key c++-mode-map [f9]   #'endless/compile-please) ;; This just compiles immediately.
+
+
+
 (require 'semantic)
 (global-semanticdb-minor-mode 1)
 (global-semantic-idle-scheduler-mode 1)
@@ -249,6 +252,13 @@ With a prefix argument, use comint-mode."
 (global-set-key (kbd "C-<f1>") 'helm-projectile-find-file-in-known-projects)
 
 (elpy-enable)
+; Fixing a key binding bug in elpy
+(define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
+; Fixing another key binding bug in iedit mode
+(define-key global-map (kbd "C-c o") 'iedit-mode)
+(setq python-shell-interpreter "python"
+      python-shell-interpreter-args "-i")
+
 
 ;; All The Icons
 (use-package all-the-icons :ensure t)
