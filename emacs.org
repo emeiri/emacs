@@ -1,0 +1,42 @@
+* General
+** C-x z                          Repeat last command
+* Editing
+** M-1 M-(                      Close parenthesis after next token
+** M-/                             Switch between auto-complete options
+** M-;                             Add comment at the end of the current line
+** C-x C-;                       Comment/Uncomment the current line
+
+** C-_ 			       Undo one entry in the current buffer's undo records (undo).
+** M-/                             Expand word
+* ETags
+** M-.         		        Jump to the tag underneath the cursor
+** M-. <tag>                  Search for a particular tag
+** C-u M-.			Find the next definition for the last tag
+** M-,				Pop back to where you previously invoked "M-."
+* Display
+** C-x C-+			Increase font size
+** C-l                              Center display on cursor                       
+* Helm
+* Helm
+** C-h b                          List all shortcuts
+* Movement
+** ESC-<			Move to the top of the buffer (beginning-of-buffer). With numeric argument n, move to n/10 of the way from the top. On graphical displays, C-<HOME> does the same. 
+** ESC->			Move to the bottom of the buffer
+** ALT-g n 		        Goto next error
+** ALT-g p 		        Goto previous error
+** M-b				Jump word backwards
+** M-f				Jump word forward
+** M-g g                         Goto line
+* Projectile
+* Org mode
+** C-c C-l                        Add link
+** C-c o                          Goto the link
+* Search
+** C-s				Incremental search forward (isearch-forward). 
+** C-r				Incremental search backward (isearch-backward).
+** C-s C-w			Search word under cursor
+** C-M-s			        Regexp search
+** A-s o			        Occurances dispaly
+** M-p                             Load previous search string
+* Window
+** C-x o   		Select another window (other-window). 

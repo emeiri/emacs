@@ -1,25 +1,27 @@
-;; General
-(set-background-color "honeydew")
+; General
+;(set-background-color "black")
 (cua-mode 1)
-(electric-pair-mode 1)
-(setq inhibit-startup-message t)
-(global-hl-line-mode 1)                                    ;; turn on highlighting current line
-(show-paren-mode 1)                                        ;; turn on bracket match highlight
-(global-auto-revert-mode 1)                                ;; when a file is updated outside emacs, make it update if it's already opened in emacs
 (desktop-save-mode 1)                                      ;; save/restore opened files
-(set-face-attribute 'default nil :height 150)
+(electric-pair-mode 1)
+(global-auto-revert-mode 1)                                ;; when a file is updated outside emacs, make it update if it's already opened in emacs
+(global-hl-line-mode 1)                                    ;; turn on highlighting current line
 (global-linum-mode 0)                                      ;; show line numbers
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(set-face-attribute 'default nil :height 150)
 (setq auto-window-vscroll nil)
 (setq compilation-ask-about-save nil)
-(setq compilation-scroll-output t)
+(setq inhibit-startup-message t)
+(setq visible-bell t)
+(setq-default indent-tabs-mode -1)
+(show-paren-mode 1)                                        ;; turn on bracket match highlight
 (tool-bar-mode -1)
-(scroll-bar-mode -1)
 (tooltip-mode -1)
-(menu-bar-mode -1)
+(which-function-mode 1)
 
 ;; Global keys
 (global-set-key [delete] 'delete-char)
-										;(global-set-key [f5] 'compile)
+(global-set-key (kbd "C-0") 'delete-window)
 
 (defcustom endless/compile-window-size 105
   "Width given to the non-compilation window."
@@ -128,9 +130,13 @@ With a prefix argument, use comint-mode."
  '(custom-safe-themes
    (quote
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" default)))
+ '(helm-grep-ignored-files
+   (quote
+    (".#*" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "*/caffe_pb2.py" "tags" ))
  '(package-selected-packages
    (quote
-    (helm-c-yasnippet yasnippet-classic-snippets neotree helm-ag ag elpy helm-projectile projectile flycheck iedit yasnippet-snippets yasnippet ace-window tabbar-ruler org-bullets which-key try use-package solarized-theme magit auto-complete-c-headers ac-c-headers))))
+    (helm-c-yasnippet yasnippet-classic-snippets autopair neotree helm-ag ag elpy helm-projectile projectile flycheck iedit yasnippet-snippets yasnippet ace-window tabbar-ruler org-bullets which-key try use-package solarized-theme magit auto-complete-c-headers ac-c-headers))))
+
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'darkokai t)
 
@@ -181,14 +187,17 @@ With a prefix argument, use comint-mode."
 (global-flycheck-mode)
 (setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
 
+;(require 'c-c++-mode)
 (require 'cc-mode)
 (setq c-basic-offset 4)
+(setq compilation-scroll-output t)
+(setq compilation-skip-threshold 2);                            Skip compilation warnings
+(setq split-height-threshold 0)
+(setq compilation-window-height 10)
 (define-key c-mode-map [C-f9] #'compile) ;; This gives a regular `compile-command' prompt.
 (define-key c++-mode-map [C-f9] #'compile) ;; This gives a regular `compile-command' prompt.
 (define-key c-mode-map [f9]   #'endless/compile-please) ;; This just compiles immediately.
 (define-key c++-mode-map [f9]   #'endless/compile-please) ;; This just compiles immediately.
-
-
 
 (require 'semantic)
 (global-semanticdb-minor-mode 1)
@@ -206,23 +215,31 @@ With a prefix argument, use comint-mode."
 ;; HELM
 (require 'helm)
 (require 'helm-config)
+(helm-mode 1)
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-set-key (kbd "M-y") 'helm-show-kill-ring)
 (global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x b") 'helm-mini)
 (global-unset-key (kbd "C-x c"))
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB work in terminal
 (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
+(global-set-key (kbd "C-<f2>") 'helm-semantic-or-imenu)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
 (when (executable-find "curl")
   (setq helm-google-suggest-use-curl-p t))
 (defalias 'list-buffers 'helm-buffers-list)
 (global-set-key (kbd "C-x b") 'list-buffers)
-(setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
+(setq helm-split-window-inside-p           t ; open helm buffer inside current window, not occupy whole other window
       helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
       helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
       helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
       helm-ff-file-name-history-use-recentf t
-      helm-echo-input-in-header-line t)
+      helm-echo-input-in-header-line t
+	  helm-M-x-fuzzy-match t ;; optional fuzzy matching for helm-M-x
+	  helm-buffers-fuzzy-matching t
+      helm-recentf-fuzzy-match    t)
+	  
 
 (defun spacemacs//helm-hide-minibuffer-maybe ()
   "Hide minibuffer in Helm session if we use the header line as input field."
@@ -236,20 +253,20 @@ With a prefix argument, use comint-mode."
 
 (add-hook 'helm-minibuffer-set-up-hook
           'spacemacs//helm-hide-minibuffer-maybe)
-(setq helm-autoresize-max-height 0)
+(setq helm-autoresize-max-height 40)
 (setq helm-autoresize-min-height 20)
 (helm-autoresize-mode 1)
-(helm-mode 1)
 
 ;; PROJECTILE
 (projectile-mode)
-(setq projectile-comletion-system 'helm)
-(setq projectile-proect-search-path '("~/"))
 (require 'helm-projectile)
 (helm-projectile-on)
+(setq projectile-completion-system 'helm)
+(setq projectile-project-search-path '("~/"))
 (setq projectile-switch-project-action 'helm-projectile)
 (setq projectile-globally-ignored-files '("GTAGS" "GRTAGS"))
 (global-set-key (kbd "C-<f1>") 'helm-projectile-find-file-in-known-projects)
+(global-set-key (kbd "C-S-f") 'helm-projectile-ag)
 
 (elpy-enable)
 ; Fixing a key binding bug in elpy
@@ -270,3 +287,7 @@ With a prefix argument, use comint-mode."
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 
 (put 'downcase-region 'disabled nil)
+
+(custom-set-variables
+ '(helm-ag-ignore-buffer-patterns '("\\.caffe_pb2\\.py\\'")))
+
