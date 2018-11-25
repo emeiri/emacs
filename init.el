@@ -12,6 +12,7 @@
 (setq auto-window-vscroll nil)
 (setq compilation-ask-about-save nil)
 (setq inhibit-startup-message t)
+(setq make-backup-files nil)
 (setq visible-bell t)
 (setq-default indent-tabs-mode -1)
 (show-paren-mode 1)                                        ;; turn on bracket match highlight
@@ -235,7 +236,8 @@ With a prefix argument, use comint-mode."
       helm-echo-input-in-header-line t
 	  helm-M-x-fuzzy-match t ;; optional fuzzy matching for helm-M-x
 	  helm-buffers-fuzzy-matching t
-      helm-recentf-fuzzy-match    t)
+	  helm-recentf-fuzzy-match    t)
+(add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
 	  
 
 (defun spacemacs//helm-hide-minibuffer-maybe ()
