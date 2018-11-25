@@ -23,7 +23,7 @@
 ;; Global keys
 (global-set-key [delete] 'delete-char)
 (global-set-key (kbd "C-0") 'delete-window)
-										;(global-set-key [f5] 'compile)
+
 (defcustom endless/compile-window-size 105
   "Width given to the non-compilation window."
   :type 'integer
@@ -136,7 +136,8 @@ With a prefix argument, use comint-mode."
     (".#*" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "*/caffe_pb2.py" "tags" ))
  '(package-selected-packages
    (quote
-    (autopair neotree helm-ag ag elpy helm-projectile projectile flycheck iedit yasnippet-snippets yasnippet ace-window tabbar-ruler org-bullets which-key try use-package solarized-theme magit auto-complete-c-headers ac-c-headers))))
+    (helm-c-yasnippet yasnippet-classic-snippets autopair neotree helm-ag ag elpy helm-projectile projectile flycheck iedit yasnippet-snippets yasnippet ace-window tabbar-ruler org-bullets which-key try use-package solarized-theme magit auto-complete-c-headers ac-c-headers)))))
+
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'darkokai t)
 
@@ -173,6 +174,7 @@ With a prefix argument, use comint-mode."
 (require 'yasnippet)
 (yas-reload-all)
 (add-hook 'c-mode-hook #'yas-minor-mode)
+(add-hook 'cc-mode-hook #'yas-minor-mode)
 
 ;(setq tabbar-ruler-global-tabbar t)    ; get tabbar
 ;(setq tabbar-ruler-global-ruler nil)   ; get global ruler
@@ -197,6 +199,7 @@ With a prefix argument, use comint-mode."
 (define-key c++-mode-map [C-f9] #'compile) ;; This gives a regular `compile-command' prompt.
 (define-key c-mode-map [f9]   #'endless/compile-please) ;; This just compiles immediately.
 (define-key c++-mode-map [f9]   #'endless/compile-please) ;; This just compiles immediately.
+
 (require 'semantic)
 (global-semanticdb-minor-mode 1)
 (global-semantic-idle-scheduler-mode 1)
@@ -268,6 +271,13 @@ With a prefix argument, use comint-mode."
 (global-set-key (kbd "C-S-f") 'helm-projectile-ag)
 
 (elpy-enable)
+; Fixing a key binding bug in elpy
+(define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
+; Fixing another key binding bug in iedit mode
+(define-key global-map (kbd "C-c o") 'iedit-mode)
+(setq python-shell-interpreter "python"
+      python-shell-interpreter-args "-i")
+
 
 ;; All The Icons
 (use-package all-the-icons :ensure t)
@@ -282,4 +292,3 @@ With a prefix argument, use comint-mode."
 
 (custom-set-variables
  '(helm-ag-ignore-buffer-patterns '("\\.caffe_pb2\\.py\\'")))
-
