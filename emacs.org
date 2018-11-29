@@ -8,6 +8,8 @@
 
 ** C-_ 			       Undo one entry in the current buffer's undo records (undo).
 ** M-/                             Expand word
+** M-d                            Delete word forward
+** M-backspace             Delete word backward
 * ETags
 ** M-.         		        Jump to the tag underneath the cursor
 ** M-. <tag>                  Search for a particular tag
@@ -19,6 +21,7 @@
 * Helm
 ** C-h b                          List all shortcuts
 ** C-c h m                      Browse man pages
+** M-y                             Show kill ring
 * Movement
 ** ESC-<			Move to the top of the buffer (beginning-of-buffer). With numeric argument n, move to n/10 of the way from the top. On graphical displays, C-<HOME> does the same. 
 ** ESC->			Move to the bottom of the buffer
@@ -27,6 +30,8 @@
 ** M-b				Jump word backwards
 ** M-f				Jump word forward
 ** M-g g                         Goto line
+** C-M-home                  Goto start of function
+** C-M-end                     Goto end of function
 * Projectile
 * Org mode
 ** C-c C-l                        Add link
