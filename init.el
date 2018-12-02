@@ -19,6 +19,7 @@
 (tool-bar-mode -1)
 (tooltip-mode -1)
 (which-function-mode 1)
+(fset 'yes-or-no-p 'y-or-n-p)
 
 ;; Global keys
 (global-set-key [delete] 'delete-char)
@@ -159,7 +160,15 @@ With a prefix argument, use comint-mode."
 (require 'ac-c-headers)
 (require 'auto-complete)
 (require 'auto-complete-config)
-(ac-config-default)
+;(ac-config-default)
+
+(use-package auto-complete
+  :ensure t
+  :init
+  (progn
+    (ac-config-default)
+    (global-auto-complete-mode t)
+    ))
 
 (defun my:ac-c-header-init()
   (require 'auto-complete-c-headers)
