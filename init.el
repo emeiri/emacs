@@ -197,7 +197,7 @@ With a prefix argument, use comint-mode."
 ;(setq tabbar-ruler-popup-scrollbar t)  ; show scroll-bar on mouse-move
 ;(require 'tabbar-ruler)
 
-(require 'iedit)
+(require 'iedit)    ; C-; to edit all occurences of current string
 
 ;(global-flycheck-mode)
 ;(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
@@ -308,8 +308,6 @@ With a prefix argument, use comint-mode."
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 
 (put 'downcase-region 'disabled nil)
-
-
 
 (use-package avy
   :ensure t
