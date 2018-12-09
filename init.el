@@ -185,10 +185,14 @@ With a prefix argument, use comint-mode."
 (add-hook 'c++-mode-hook 'my:ac-c-header-init)
 (add-hook 'c-mode-hook 'my:ac-c-header-init)
 
-(require 'yasnippet)
-(yas-reload-all)
-(add-hook 'c-mode-hook #'yas-minor-mode)
-(add-hook 'cc-mode-hook #'yas-minor-mode)
+(use-package yasnippet
+  :ensure t
+  :init
+  (yas-global-mode t))
+;(require 'yasnippet)
+;(yas-reload-all)
+;(add-hook 'c-mode-hook #'yas-minor-mode)
+;(add-hook 'cc-mode-hook #'yas-minor-mode)
 
 ;(setq tabbar-ruler-global-tabbar t)    ; get tabbar
 ;(setq tabbar-ruler-global-ruler nil)   ; get global ruler
@@ -288,7 +292,12 @@ With a prefix argument, use comint-mode."
 (global-set-key (kbd "C-<f1>") 'helm-projectile-find-file-in-known-projects)
 (global-set-key (kbd "C-S-f") 'helm-projectile-ag)
 
-(elpy-enable)
+(use-package elpy
+  :ensure t
+  :config  
+  (elpy-enable))
+
+
 ; Fixing a key binding bug in elpy
 (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
 ; Fixing another key binding bug in iedit mode
@@ -308,7 +317,6 @@ With a prefix argument, use comint-mode."
   (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
 
 (put 'downcase-region 'disabled nil)
-
 
 
 (use-package avy

@@ -10,6 +10,8 @@
 ** M-/                             Expand word
 ** M-d                            Delete word forward
 ** M-backspace             Delete word backward
+* Elpy
+** C-c C-d                      Show documentation
 * ETags
 ** M-.         		        Jump to the tag underneath the cursor
 ** M-. <tag>                  Search for a particular tag
