@@ -326,3 +326,7 @@ With a prefix argument, use comint-mode."
   (add-hook 'python-mode-hook 'jedi:setup)
   (add-hook 'python-mode-hook 'jedi:ac-setup))
 
+(use-package undo-tree
+:ensure t
+  :init
+    (global-undo-tree-mode))
