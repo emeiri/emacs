@@ -1,5 +1,10 @@
-* General
-** C-x z                          Repeat last command
+* Bookmarks
+** C-x r m - set bookmark
+** C-x r b - jump to bookmark
+** C-x r l - list bookmarks
+* Display
+** C-x C-+			Increase font size
+** C-l                              Center display on cursor                       
 * Editing
 ** M-1 M-(                      Close parenthesis after next token
 ** M-/                             Switch between auto-complete options
@@ -17,9 +22,8 @@
 ** M-. <tag>                  Search for a particular tag
 ** C-u M-.			Find the next definition for the last tag
 ** M-,				Pop back to where you previously invoked "M-."
-* Display
-** C-x C-+			Increase font size
-** C-l                              Center display on cursor                       
+* General
+** C-x z                          Repeat last command
 * Helm
 ** C-h b                          List all shortcuts
 ** C-c h m                      Browse man pages
@@ -34,16 +38,17 @@
 ** M-g g                         Goto line
 ** C-M-home                  Goto start of function
 ** C-M-end                     Goto end of function
-* Projectile
 * Org mode
 ** C-c C-l                        Add link
 ** C-c o                          Goto the link
+* Projectile
 * Search
 ** C-s				Incremental search forward (isearch-forward). 
 ** C-r				Incremental search backward (isearch-backward).
 ** C-s C-w			Search word under cursor
 ** C-M-s			        Regexp search
 ** A-s o			        Occurances dispaly
-** M-p                             Load previous search string
+** M-p                            Load previous search string
+** iedit-mode                 C-;
 * Window
 ** C-x o   		Select another window (other-window). 
