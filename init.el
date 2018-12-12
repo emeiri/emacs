@@ -329,4 +329,9 @@ With a prefix argument, use comint-mode."
 (use-package undo-tree
 :ensure t
   :init
-    (global-undo-tree-mode))
+  (global-undo-tree-mode))
+
+(use-package beacon
+:ensure ;TODO: 
+:config
+(beacon-mode 1))
