@@ -40,6 +40,7 @@
 ** M-g g                         Goto line
 ** C-M-home                  Goto start of function
 ** C-M-end                     Goto end of function
+** M-m                           Move to start of code line
 * Org mode
 ** C-c C-l                        Add link
 ** C-c o                          Goto the link

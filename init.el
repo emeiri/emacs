@@ -201,7 +201,8 @@ With a prefix argument, use comint-mode."
 ;(setq tabbar-ruler-popup-scrollbar t)  ; show scroll-bar on mouse-move
 ;(require 'tabbar-ruler)
 
-(require 'iedit)    ; C-; to edit all occurences of current string
+(use-package iedit    ; C-; to edit all occurences of current string
+  :ensure t)
 
 ;(global-flycheck-mode)
 ;(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
