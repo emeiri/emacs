@@ -138,7 +138,7 @@ With a prefix argument, use comint-mode."
     (".#*" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "*/caffe_pb2.py" "tags")))
  '(package-selected-packages
    (quote
-    (jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
+    (expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'darkokai t)
@@ -185,10 +185,14 @@ With a prefix argument, use comint-mode."
 (add-hook 'c++-mode-hook 'my:ac-c-header-init)
 (add-hook 'c-mode-hook 'my:ac-c-header-init)
 
-(require 'yasnippet)
-(yas-reload-all)
-(add-hook 'c-mode-hook #'yas-minor-mode)
-(add-hook 'cc-mode-hook #'yas-minor-mode)
+(use-package yasnippet
+  :ensure t
+  :init
+  (yas-global-mode t))
+;(require 'yasnippet)
+;(yas-reload-all)
+;(add-hook 'c-mode-hook #'yas-minor-mode)
+;(add-hook 'cc-mode-hook #'yas-minor-mode)
 
 ;(setq tabbar-ruler-global-tabbar t)    ; get tabbar
 ;(setq tabbar-ruler-global-ruler nil)   ; get global ruler
@@ -197,7 +201,8 @@ With a prefix argument, use comint-mode."
 ;(setq tabbar-ruler-popup-scrollbar t)  ; show scroll-bar on mouse-move
 ;(require 'tabbar-ruler)
 
-(require 'iedit)    ; C-; to edit all occurences of current string
+(use-package iedit    ; C-; to edit all occurences of current string
+  :ensure t)
 
 ;(global-flycheck-mode)
 ;(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
@@ -288,7 +293,11 @@ With a prefix argument, use comint-mode."
 (global-set-key (kbd "C-<f1>") 'helm-projectile-find-file-in-known-projects)
 (global-set-key (kbd "C-S-f") 'helm-projectile-ag)
 
-(elpy-enable)
+(use-package elpy
+  :ensure t
+  :config  
+  (elpy-enable))
+
 ; Fixing a key binding bug in elpy
 (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
 ; Fixing another key binding bug in iedit mode
@@ -296,7 +305,6 @@ With a prefix argument, use comint-mode."
 (setq python-shell-interpreter "python"
       python-shell-interpreter-args "-i")
 (highlight-indentation-mode -1)
-
 
 ;; All The Icons
 (use-package all-the-icons :ensure t)
@@ -318,4 +326,24 @@ With a prefix argument, use comint-mode."
   :init
   (add-hook 'python-mode-hook 'jedi:setup)
   (add-hook 'python-mode-hook 'jedi:ac-setup))
+
+(use-package undo-tree
+:ensure t
+  :init
+  (global-undo-tree-mode))
+
+(use-package beacon
+:ensure ;TODO: 
+:config
+(beacon-mode 1))
+
+(use-package hungry-delete
+  :ensure t
+  :config
+  (hungry-delete-mode))
+
+(use-package expand-region
+:ensure t
+:config 
+(global-set-key (kbd "C-=") 'er/expand-region))
 
