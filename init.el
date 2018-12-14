@@ -98,7 +98,12 @@ With a prefix argument, use comint-mode."
     ))
 (global-set-key (kbd "M-o") 'ace-window)
 
-(use-package counsel  :ensure t)
+(use-package counsel
+  :ensure t
+  :bind
+  (("M-y" . counsel-yank-pop)
+   :map ivy-minibuffer-map
+   ("M-y" . ivy-next-line)))
 
 (use-package swiper
   :ensure try
@@ -241,7 +246,7 @@ With a prefix argument, use comint-mode."
 (require 'helm-config)
 (helm-mode 1)
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+;(global-set-key (kbd "M-y") 'helm-show-kill-ring)    ; replaced by counsel
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x b") 'helm-mini)
 (global-unset-key (kbd "C-x c"))
