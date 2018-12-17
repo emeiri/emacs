@@ -45,6 +45,9 @@
 ** C-c C-l                        Add link
 ** C-c o                          Goto the link
 * Projectile
+* Rectangles
+** C-x-r-k                       Kill rectangle
+** C-x-r-y                       Yank rectangle
 * Search
 ** C-s				Incremental search forward (isearch-forward). 
 ** C-r				Incremental search backward (isearch-backward).

@@ -189,10 +189,6 @@ With a prefix argument, use comint-mode."
   :ensure t
   :init
   (yas-global-mode t))
-;(require 'yasnippet)
-;(yas-reload-all)
-;(add-hook 'c-mode-hook #'yas-minor-mode)
-;(add-hook 'cc-mode-hook #'yas-minor-mode)
 
 ;(setq tabbar-ruler-global-tabbar t)    ; get tabbar
 ;(setq tabbar-ruler-global-ruler nil)   ; get global ruler
