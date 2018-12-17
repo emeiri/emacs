@@ -66,12 +66,16 @@ With a prefix argument, use comint-mode."
   (package-install 'use-package))
 
 ; Packages
-(use-package doom-themes
+;(use-package doom-themes
+;  :ensure t
+;  :config
+					;  (load-theme 'doom-one t))
+(use-package zenburn-theme
   :ensure t
-  :config
-  (load-theme 'doom-one t))
+  :config (load-theme 'zenburn t))
 
-(use-package try :ensure t)
+(use-package try
+  :ensure t)
 
 (use-package which-key
   :ensure t
@@ -146,7 +150,7 @@ With a prefix argument, use comint-mode."
     (ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load-theme 'darkokai t)
+;;(load-theme 'darkokai t)
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
