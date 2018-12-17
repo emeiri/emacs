@@ -366,7 +366,3 @@ With a prefix argument, use comint-mode."
 	      (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
 		(ggtags-mode 1))))
   )
-
-
-(provide 'init)\n;;; init ends here
-
