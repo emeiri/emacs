@@ -1,3 +1,6 @@
+* Links
+** https://ebzzry.io/en/emacs-pairs/ - article on smartparens
+
 * Bookmarks
 ** C-x r m - set bookmark
 ** C-x r b - jump to bookmark
