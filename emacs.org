@@ -55,6 +55,7 @@
 ** C-M-s			        Regexp search
 ** A-s o			        Occurances dispaly
 ** M-p                            Load previous search string
-** iedit-mode                 C-;
+** C-;                             iedit-mode
+** C-'                             Show only selected lines in iedit-mode
 * Window
 ** C-x o   		Select another window (other-window). 
