@@ -1,5 +1,11 @@
 * Links
-** https://ebzzry.io/en/emacs-pairs/ - article on smartparens
+** Articles
+*** https://ebzzry.io/en/emacs-pairs/ - article on smartparens
+** https://realpython.com/emacs-the-best-python-editor/ - article on emacs and python
+** Interesting packages
+*** dump-jump - zero effort tag jumping system
+*** emmet mode - html/css editing
+
 
 * Bookmarks
 ** C-x r m - set bookmark

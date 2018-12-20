@@ -1,6 +1,6 @@
 ; General
 ;(set-background-color "black")
-(cua-mode 1)
+;(cua-mode 1)
 (desktop-save-mode 1)                                      ;; save/restore opened files
 (electric-pair-mode 1)
 (global-auto-revert-mode 1)                                ;; when a file is updated outside emacs, make it update if it's already opened in emacs
