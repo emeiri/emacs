@@ -1,11 +1,13 @@
 * Links
 ** Articles
 *** https://ebzzry.io/en/emacs-pairs/ - article on smartparens
-** https://realpython.com/emacs-the-best-python-editor/ - article on emacs and python
+*** https://realpython.com/emacs-the-best-python-editor/ - article on emacs and python
+*** https://learnxinyminutes.com/docs/elisp/ - elisp tutorial
+*** https://sites.google.com/site/steveyegge2/effective-emacs - effective emacs
 ** Interesting packages
 *** dump-jump - zero effort tag jumping system
 *** emmet mode - html/css editing
-
+    
 
 * Bookmarks
 ** C-x r m - set bookmark
@@ -24,6 +26,7 @@
 ** M-/                             Expand word
 ** M-d                            Delete word forward
 ** M-backspace             Delete word backward
+** C-M-k                   Kill until end of sexp
 * Elpy
 ** C-c C-d                      Show documentation
 * ETags
