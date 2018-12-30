@@ -161,13 +161,8 @@ With a prefix argument, use comint-mode."
  '(default ((t (:height 150 :family "Hack"))))
  '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))
 
-
-
-
-(require 'ac-c-headers)
-(require 'auto-complete)
-(require 'auto-complete-config)
-;(ac-config-default)
+(use-package ac-c-headers
+     :ensure t)
 
 (use-package auto-complete
   :ensure t
