@@ -443,6 +443,6 @@ With a prefix argument, use comint-mode."
   :config  
   (pcre-mode))
 
-*(use-package git-gutter
+(use-package git-gutter
    :ensure t
    :init (global-git-gutter-mode +1))
