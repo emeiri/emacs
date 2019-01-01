@@ -121,11 +121,11 @@ With a prefix argument, use comint-mode."
     (global-set-key (kbd "<f6>") 'ivy-resume)
     (global-set-key (kbd "M-x") 'counsel-M-x)
     (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-    (global-set-key (kbd "<f1> f") 'counsel-describe-function)
-    (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-    (global-set-key (kbd "<f1> l") 'counsel-load-library)
-    (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-    (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+;;    (global-set-key (kbd "<f1> f") 'counsel-describe-function)
+;;    (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+ ;;   (global-set-key (kbd "<f1> l") 'counsel-load-library)
+ ;;   (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+;;    (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
     (global-set-key (kbd "C-c g") 'counsel-git)
     (global-set-key (kbd "C-c j") 'counsel-git-grep)
     (global-set-key (kbd "C-c k") 'counsel-ag)
@@ -222,12 +222,11 @@ With a prefix argument, use comint-mode."
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB work in terminal
 (define-key helm-map (kbd "C-z")  'helm-select-action) ; list actions using C-z
-(global-set-key (kbd "C-<f2>") 'helm-semantic-or-imenu)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
 (when (executable-find "curl")
   (setq helm-google-suggest-use-curl-p t))
 (defalias 'list-buffers 'helm-buffers-list)
-(global-set-key (kbd "C-x b") 'list-buffers)
+
 (setq helm-split-window-inside-p           t ; open helm buffer inside current window, not occupy whole other window
       helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
       helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
@@ -264,7 +263,6 @@ With a prefix argument, use comint-mode."
 (setq projectile-project-search-path '("~/"))
 (setq projectile-switch-project-action 'helm-projectile)
 (setq projectile-globally-ignored-files '("GTAGS" "GRTAGS"))
-(global-set-key (kbd "C-<f1>") 'helm-projectile-find-file-in-known-projects)
 (global-set-key (kbd "C-S-f") 'helm-projectile-ag)
 
 (use-package elpy
@@ -414,3 +412,8 @@ With a prefix argument, use comint-mode."
 (use-package git-gutter
    :ensure t
    :init (global-git-gutter-mode +1))
+
+;; Global key bindings
+(global-set-key (kbd "<f1>") 'list-buffers)
+(global-set-key (kbd "<f2>") 'helm-projectile-find-file-in-known-projects)
+(global-set-key (kbd "<f3>") 'helm-semantic-or-imenu)

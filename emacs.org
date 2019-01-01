@@ -4,6 +4,8 @@
 *** https://realpython.com/emacs-the-best-python-editor/ - article on emacs and python
 *** https://learnxinyminutes.com/docs/elisp/ - elisp tutorial
 *** https://sites.google.com/site/steveyegge2/effective-emacs - effective emacs
+** Videos
+*** https://magit.vc/screencasts/
 ** Interesting packages
 *** dump-jump - zero effort tag jumping system
 *** emmet mode - html/css editing
