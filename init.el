@@ -197,6 +197,22 @@ With a prefix argument, use comint-mode."
 (define-key c-mode-map [f9]   #'endless/compile-please) ;; This just compiles immediately.
 (define-key c++-mode-map [f9]   #'endless/compile-please) ;; This just compiles immediately.
 
+(defun bury-compile-buffer-if-successful (buffer string)
+  "Bury a compilation buffer if succeeded without warnings "
+  (if (and
+       (string-match "compilation" (buffer-name buffer))
+       (string-match "finished" string)
+      )
+      (run-with-timer 1 nil
+                      (lambda (buf)
+                       ; (bury-buffer buf)
+					; (switch-to-prev-buffer (get-buffer-window buf) 'kill)
+			(ace-window 1)
+			(delete-other-windows)
+			)
+                      buffer)))
+(add-hook 'compilation-finish-functions 'bury-compile-buffer-if-successful)
+
 (require 'semantic)
 (global-semanticdb-minor-mode 1)
 (global-semantic-idle-scheduler-mode 1)
