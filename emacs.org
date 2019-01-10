@@ -29,7 +29,7 @@
 ** C-x C-+			Increase font size
 ** C-l                              Center display on cursor                       
 * Editing
-** M-1 M-(                      Close parenthesis after next token
+** M-1 M-(                  Close parenthesis after next token
 ** M-/                             Switch between auto-complete options
 ** M-;                             Add comment at the end of the current line
 ** C-x C-;                       Comment/Uncomment the current line
@@ -79,9 +79,13 @@
 ** C-M-home                     Goto start of function
 ** C-M-end                      Goto end of function
 ** M-m                          Move to start of code line
+* Narrowing
+** C-x n d                        Narrow function
+** C-x n w                        Expand back
 * Org mode
 ** C-c C-l                        Add link
 ** C-c o                          Goto the link
+** S-TAB                          Global visibility cycling
 * Projectile
 * Rectangles
 ** C-x-r-k                       Kill rectangle
