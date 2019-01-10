@@ -438,3 +438,5 @@ With a prefix argument, use comint-mode."
 (require 'ob-shell)
 (org-babel-do-load-languages 'org-babel-load-languages '((sh . t )))
 
+(normal-erase-is-backspace-mode 0)
+(highlight-indentation-mode 0)
