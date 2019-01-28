@@ -1,0 +1,35 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("srgan_prototxt"
+ (filename . "~/xeon_dnn-caffe/srgan/srgan_BN_int8_dc2.prototxt")
+ (front-context-string . "name: \"SRGAN\"\nst")
+ (rear-context-string)
+ (position . 1))
+("irv2_prototxt"
+ (filename . "~/xeon_dnn-caffe/kfc/results/irv2/dc2_auto_generted.prototxt")
+ (front-context-string . "state {\n  phase:")
+ (rear-context-string)
+ (position . 1))
+("resnet_prototxt"
+ (filename . "~/xeon_dnn-caffe/resnet/ResNet-50.direct_conv2.prototxt")
+ (front-context-string . "state {\n  phase:")
+ (rear-context-string)
+ (position . 1))
+("benchmark"
+ (filename . "~/xeon_dnn-caffe/src/caffe/net.cpp")
+ (front-context-string . "    CaffeTimeRes")
+ (rear-context-string . "typename Dtype>\n")
+ (position . 68771))
+("postconv"
+ (filename . "~/xeon_dnn-caffe/kernels/include/post_convolution.hpp")
+ (front-context-string . "(__m512i output_")
+ (rear-context-string . "nvolutionTileRow")
+ (position . 25549))
+("dc2"
+ (filename . "~/xeon_dnn-caffe/kernels/include/DirectConv2_kernel.hpp")
+ (front-context-string . "    KER_PREFETCH")
+ (rear-context-string . "hing streams */\n")
+ (position . 44937))
+)

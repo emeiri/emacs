@@ -6,6 +6,10 @@
 *** https://sites.google.com/site/steveyegge2/effective-emacs - effective emacs
 ** Videos
 *** https://magit.vc/screencasts/
+** Podcasts
+*** [[https://www.youtube.com/playlist?list=PL9KxKa8NpFxIcNQa9js7dQQIHc81b0-Xg][Mike Zamensky - Using Emacs blog]]
+*** [[https://www.youtube.com/playlist?list=PLrFss89N5XNw8rTgI2fVhSj9Y62TpphFI][Emacs is Great]]
+*** 
 ** Interesting packages
 *** dump-jump - zero effort tag jumping system
 *** emmet mode - html/css editing
@@ -52,6 +56,8 @@
 ** C-h b                          List all shortcuts
 ** C-c h m                      Browse man pages
 ** M-y                             Show kill ring
+* Help
+** C-h P                          Help on packages
 * Marking text
 ** C-=                            Expand region
 * Movement
