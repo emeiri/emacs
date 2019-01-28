@@ -19,8 +19,9 @@
 (tool-bar-mode -1)
 (tooltip-mode -1)
 (which-function-mode 1)
-(fset 'yes-or-no-p 'y-or-n-p)(
-setq next-line-add-newlines t)
+(fset 'yes-or-no-p 'y-or-n-p)
+(setq next-line-add-newlines t)
+(winner-mode 1)
 
 ;; Global keys
 (global-set-key [delete] 'delete-char)
@@ -443,11 +444,13 @@ With a prefix argument, use comint-mode."
 (global-set-key (kbd "<f1>") 'list-buffers)
 (global-set-key (kbd "<f2>") 'helm-projectile-find-file-in-known-projects)
 (global-set-key (kbd "<f3>") 'helm-semantic-or-imenu)
-(global-set-key (kbd "<f4>") 'switch-to-workflow)
+(global-set-key (kbd "<f4>") 'bookmark-jump)
+(global-set-key (kbd "<f6>") 'switch-to-workflow)
+(global-set-key (kbd "M-/") 'hippie-expand)
 
 
-(require 'ob-shell)
-(org-babel-do-load-languages 'org-babel-load-languages '((sh . t )))
+;;(require 'ob-shell)
+;;(org-babel-do-load-languages 'org-babel-load-languages '((sh . t )))
 
 (normal-erase-is-backspace-mode 0)
 (highlight-indentation-mode 0)
