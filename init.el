@@ -23,7 +23,7 @@
 (setq next-line-add-newlines t)
 (winner-mode 1)
 (normal-erase-is-backspace-mode 0)
-(highlight-indentation-mode 0)
+
 (setq tramp-default-method "ssh")
 
 (defcustom endless/compile-window-size 105
@@ -148,7 +148,7 @@ With a prefix argument, use comint-mode."
     (".#*" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "*/caffe_pb2.py" "tags")))
  '(package-selected-packages
    (quote
-    (eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
+    (flycheck-irony company-jedi irony-eldoc company-irony eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 ;;(load-theme 'darkokai t)
@@ -161,7 +161,10 @@ With a prefix argument, use comint-mode."
  '(default ((t (:height 150 :family "Hack"))))
  '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))
 
+
+;; Choose autocomplete or company
 (load "~/.emacs.d/ac.el")
+;;(load "~/.emacs.d/company.el")
 
 (use-package yasnippet
   :ensure t
@@ -458,3 +461,4 @@ With a prefix argument, use comint-mode."
 ;;(require 'ob-shell)
 ;;(org-babel-do-load-languages 'org-babel-load-languages '((sh . t )))
 
+(highlight-indentation-mode 0)
