@@ -22,10 +22,10 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq next-line-add-newlines t)
 (winner-mode 1)
+(normal-erase-is-backspace-mode 0)
+(highlight-indentation-mode 0)
 
-;; Global keys
-(global-set-key [delete] 'delete-char)
-(global-set-key (kbd "C-0") 'delete-window)
+
 
 (defcustom endless/compile-window-size 105
   "Width given to the non-compilation window."
@@ -120,8 +120,8 @@ With a prefix argument, use comint-mode."
     (global-set-key "\C-s" 'swiper)
     (global-set-key (kbd "C-c C-r") 'ivy-resume)
     (global-set-key (kbd "<f6>") 'ivy-resume)
-    (global-set-key (kbd "M-x") 'counsel-M-x)
-    (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+;;    (global-set-key (kbd "M-x") 'counsel-M-x)
+;;    (global-set-key (kbd "C-x C-f") 'counsel-find-file)
 ;;    (global-set-key (kbd "<f1> f") 'counsel-describe-function)
 ;;    (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
  ;;   (global-set-key (kbd "<f1> l") 'counsel-load-library)
@@ -281,7 +281,8 @@ With a prefix argument, use comint-mode."
 (setq projectile-project-search-path '("~/"))
 (setq projectile-switch-project-action 'helm-projectile)
 (setq projectile-globally-ignored-files '("GTAGS" "GRTAGS"))
-(global-set-key (kbd "C-S-f") 'helm-projectile-ag)
+(setq projectile-enable-caching t)
+
 
 (use-package elpy
   :ensure t
@@ -435,6 +436,10 @@ With a prefix argument, use comint-mode."
   :ensure t
   :config (eyebrowse-mode t))
 
+(use-package magit
+  :ensure t
+  )
+
 (defun switch-to-workflow()
   (interactive)
   (switch-to-buffer "workflow.org")
@@ -447,10 +452,10 @@ With a prefix argument, use comint-mode."
 (global-set-key (kbd "<f4>") 'bookmark-jump)
 (global-set-key (kbd "<f6>") 'switch-to-workflow)
 (global-set-key (kbd "M-/") 'hippie-expand)
-
+(global-set-key (kbd "C-S-f") 'helm-projectile-ag)
+(global-set-key [delete] 'delete-char)
+(global-set-key (kbd "C-0") 'delete-window)
 
 ;;(require 'ob-shell)
 ;;(org-babel-do-load-languages 'org-babel-load-languages '((sh . t )))
 
-(normal-erase-is-backspace-mode 0)
-(highlight-indentation-mode 0)
