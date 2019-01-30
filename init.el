@@ -24,8 +24,7 @@
 (winner-mode 1)
 (normal-erase-is-backspace-mode 0)
 (highlight-indentation-mode 0)
-
-
+(setq tramp-default-method "ssh")
 
 (defcustom endless/compile-window-size 105
   "Width given to the non-compilation window."
