@@ -1,3 +1,4 @@
+;;;; General
 ; General
 ;(set-background-color "black")
 ;(cua-mode 1)
@@ -128,7 +129,7 @@ With a prefix argument, use comint-mode."
     (".#*" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "*/caffe_pb2.py" "tags")))
  '(package-selected-packages
    (quote
-    (flycheck-irony company-jedi irony-eldoc company-irony eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
+    (company-quickhelp paredit flycheck-irony company-jedi irony-eldoc company-irony eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 ;;(load-theme 'darkokai t)
@@ -143,8 +144,9 @@ With a prefix argument, use comint-mode."
 
 
 ;; Choose autocomplete or company
-(load "~/.emacs.d/ac.el")
-;;(load "~/.emacs.d/company.el")
+;;(load "~/.emacs.d/ac.el")
+;(load "~/.emacs.d/company.el")
+(load "~/.emacs.d/company_aritra.el")
 
 (use-package yasnippet
   :ensure t
@@ -158,8 +160,9 @@ With a prefix argument, use comint-mode."
 ;(setq tabbar-ruler-popup-scrollbar t)  ; show scroll-bar on mouse-move
 ;(require 'tabbar-ruler)
 
-(use-package iedit    ; C-; to edit all occurences of current string
-  :ensure t)
+;(use-package iedit    ; C-; to edit all occurences of current string
+;  :ensure t)
+(require 'iedit)
 
 ;(global-flycheck-mode)
 ;(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
@@ -419,8 +422,10 @@ With a prefix argument, use comint-mode."
   :config (eyebrowse-mode t))
 
 (use-package magit
-  :ensure t
-  )
+  :ensure t)
+
+(use-package paredit
+  :ensure t)
 
 (defun switch-to-workflow()
   (interactive)

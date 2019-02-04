@@ -1,0 +1,6 @@
+(add-hook 'after-init-hook 'global-company-mode)
+(global-company-mode t)
+(setq company-minimum-prefix-length 1)
+(setq company-idle-delay 0)
+(company-quickhelp-mode 1)
+(setq company-quickhelp-delay 0)
