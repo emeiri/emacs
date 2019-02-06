@@ -8,8 +8,17 @@
 *** https://magit.vc/screencasts/
 ** Podcasts
 *** [[https://www.youtube.com/playlist?list=PL9KxKa8NpFxIcNQa9js7dQQIHc81b0-Xg][Mike Zamensky - Using Emacs blog]]
-*** [[https://www.youtube.com/playlist?list=PLrFss89N5XNw8rTgI2fVhSj9Y62TpphFI][Emacs is Great]]
-*** 
+Very good coverage of many topic. Reached #53.
+*** [[https://www.youtube.com/playlist?list=PLrFss89N5XNw8rTgI2fVhSj9Y62TpphFI][Emacs is great]]
+Topics are interesting but the presenter is very bad. Reached Ep 3 on Magit.
+*** [[https://www.youtube.com/playlist?list%3DPLBe790OrTEO44ScmDr3BpKeHS-f8FeDAv][emacs config by Aritra Bhattacharjee]]
+Currently watch
+*** [[https://www.youtube.com/channel/UC1O8700SW-wuC4fvDEoGzOw/feed][Emacs Berlin]]
+*** [[https://www.youtube.com/playlist?list%3DPLVfFIUHWy-aNaF08m34sO81dsVr4L7uI-][Emacs rocks]]
+*** [[https://www.youtube.com/playlist?list%3DPLxj9UAX4Em-IiOfvF2Qs742LxEK4owSkr][Emacs tutorials by Jekor]]
+*** [[https://www.youtube.com/playlist?list%3DPLABBCB510477C08DB][Hack Emacs]]
+*** [[https://www.youtube.com/channel/UClT2UAbC6j7TqOWurVhkuHQ][Sacha Chua]]
+
 ** Interesting packages
 *** dump-jump - zero effort tag jumping system
 *** emmet mode - html/css editing
