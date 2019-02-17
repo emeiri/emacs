@@ -6,7 +6,7 @@
 (electric-pair-mode 1)
 (global-auto-revert-mode 1)                                ;; when a file is updated outside emacs, make it update if it's already opened in emacs
 (global-hl-line-mode 1)                                    ;; turn on highlighting current line
-(global-linum-mode 0)                                      ;; show line numbers
+(global-linum-mode t)                                      ;; show line numbers
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (set-face-attribute 'default nil :height 150)
@@ -14,7 +14,7 @@
 (setq compilation-ask-about-save nil)
 (setq inhibit-startup-message t)
 (setq make-backup-files nil)
-(setq visible-bell t)
+(setq visible-bell nil)
 (setq-default indent-tabs-mode -1)
 (show-paren-mode 1)                                        ;; turn on bracket match highlight
 (tool-bar-mode -1)
@@ -24,6 +24,13 @@
 (setq next-line-add-newlines t)
 (winner-mode 1)
 (normal-erase-is-backspace-mode 0)
+(setq column-number-mode t)
+(savehist-mode 1)
+(size-indication-mode t)
+(set-language-environment "UTF-8")
+(electric-indent-mode 1)
+
+(add-hook 'prog-mode-hook (lambda () (hs-minor-mode 1)))
 
 (setq tramp-default-method "ssh")
 
@@ -82,7 +89,7 @@ With a prefix argument, use comint-mode."
 (use-package which-key
   :ensure t
   :config
-  (which-key-mode))
+  (which-key-mode t))
 
 (use-package org-bullets
   :ensure t
@@ -129,7 +136,7 @@ With a prefix argument, use comint-mode."
     (".#*" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "*/caffe_pb2.py" "tags")))
  '(package-selected-packages
    (quote
-    (company-anaconda company-quickhelp paredit flycheck-irony company-jedi irony-eldoc company-irony eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
+    (iy-go-to-char company-anaconda company-quickhelp paredit flycheck-irony company-jedi irony-eldoc company-irony eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 ;;(load-theme 'darkokai t)
@@ -427,6 +434,9 @@ With a prefix argument, use comint-mode."
 (use-package paredit
   :ensure t)
 
+(use-package iy-go-to-char
+  :ensure t)
+
 (defun switch-to-workflow()
   (interactive)
   (switch-to-buffer "workflow.org")
@@ -442,6 +452,10 @@ With a prefix argument, use comint-mode."
 (global-set-key (kbd "C-S-f") 'helm-projectile-ag)
 (global-set-key [delete] 'delete-char)
 (global-set-key (kbd "C-0") 'delete-window)
+(global-set-key (kbd "C-c @ @") 'hs-hide-all)
+(global-set-key (kbd "C-c @ h") 'hs-hide-block)
+(global-set-key (kbd "C-c @ s") 'hs-show-block)
+(global-set-key (kbd "C-c @ SPC") 'hs-show-all)
 
 ;;(require 'ob-shell)
 ;;(org-babel-do-load-languages 'org-babel-load-languages '((sh . t )))
