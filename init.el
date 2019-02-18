@@ -326,9 +326,9 @@ With a prefix argument, use comint-mode."
   (hungry-delete-mode))
 
 (use-package expand-region
-:ensure t
-:config 
-(global-set-key (kbd "C-=") 'er/expand-region))
+  :ensure t)
+
+
 
 (use-package web-mode
   :ensure t
@@ -449,13 +449,17 @@ With a prefix argument, use comint-mode."
 (global-set-key (kbd "<f4>") 'bookmark-jump)
 (global-set-key (kbd "<f6>") 'switch-to-workflow)
 (global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "C-S-f") 'helm-projectile-ag)
+(global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1)))
+(global-set-key (kbd "M-=") 'er/expand-region)
+(global-set-key (kbd "C-F") 'helm-projectile-ag)
 (global-set-key [delete] 'delete-char)
 (global-set-key (kbd "C-0") 'delete-window)
+(global-set-key (kbd "C-c f") 'iy-go-to-char)
 (global-set-key (kbd "C-c @ @") 'hs-hide-all)
 (global-set-key (kbd "C-c @ h") 'hs-hide-block)
 (global-set-key (kbd "C-c @ s") 'hs-show-block)
 (global-set-key (kbd "C-c @ SPC") 'hs-show-all)
+
 
 ;;(require 'ob-shell)
 ;;(org-babel-do-load-languages 'org-babel-load-languages '((sh . t )))

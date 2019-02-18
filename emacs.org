@@ -24,6 +24,7 @@ Useful podcast. Completed on 6.2.19. Reached #15.
 *** dump-jump - zero effort tag jumping system
 *** emmet mode - html/css editing
     
+*** key-chord - binds simulteneous key strokes (see emacs rocks #7)
 
 * Arguments
 ** Numeric arguments
