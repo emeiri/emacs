@@ -136,7 +136,7 @@ With a prefix argument, use comint-mode."
     (".#*" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "*/caffe_pb2.py" "tags")))
  '(package-selected-packages
    (quote
-    (iy-go-to-char company-anaconda company-quickhelp paredit flycheck-irony company-jedi irony-eldoc company-irony eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
+    (imenu-anywhere free-keys iy-go-to-char company-anaconda company-quickhelp paredit flycheck-irony company-jedi irony-eldoc company-irony eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 ;;(load-theme 'darkokai t)
@@ -437,6 +437,12 @@ With a prefix argument, use comint-mode."
 (use-package iy-go-to-char
   :ensure t)
 
+(use-package free-keys
+  :ensure t)
+
+(use-package imenu-anywhere
+  :ensure t)
+
 (defun switch-to-workflow()
   (interactive)
   (switch-to-buffer "workflow.org")
@@ -451,6 +457,8 @@ With a prefix argument, use comint-mode."
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1)))
 (global-set-key (kbd "M-=") 'er/expand-region)
+(global-set-key (kbd "C-,") 'pop-global-mark)
+(global-set-key (kbd "C-.") 'helm-imenu-anywhere)
 (global-set-key (kbd "C-F") 'helm-projectile-ag)
 (global-set-key [delete] 'delete-char)
 (global-set-key (kbd "C-0") 'delete-window)
@@ -459,7 +467,7 @@ With a prefix argument, use comint-mode."
 (global-set-key (kbd "C-c @ h") 'hs-hide-block)
 (global-set-key (kbd "C-c @ s") 'hs-show-block)
 (global-set-key (kbd "C-c @ SPC") 'hs-show-all)
-
+(define-key global-map (kbd "RET") 'newline-and-indent)
 
 ;;(require 'ob-shell)
 ;;(org-babel-do-load-languages 'org-babel-load-languages '((sh . t )))
