@@ -6,7 +6,7 @@
 (electric-pair-mode 1)
 (global-auto-revert-mode 1)                                ;; when a file is updated outside emacs, make it update if it's already opened in emacs
 (global-hl-line-mode 1)                                    ;; turn on highlighting current line
-(global-linum-mode t)                                      ;; show line numbers
+(global-linum-mode -1)                                      ;; show line numbers
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (set-face-attribute 'default nil :height 150)
@@ -34,6 +34,12 @@
 (electric-indent-mode 1)
 (setq scroll-conservatively 100)
 
+
+(defvar my-term-shell "/bin/bash")
+(defadvice ansi-term (before force-bash)
+  (interactive (list my-term-shell)))
+(ad-activate 'ansi-term)
+  
 
 (add-hook 'prog-mode-hook (lambda () (hs-minor-mode 1)))
 
@@ -295,7 +301,7 @@ With a prefix argument, use comint-mode."
 ; Fixing a key binding bug in elpy
 (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
 ; Fixing another key binding bug in iedit mode
-(define-key global-map (kbd "C-c o") 'iedit-mode)
+
 (setq python-shell-interpreter "python"
       python-shell-interpreter-args "-i")
 
@@ -476,6 +482,7 @@ With a prefix argument, use comint-mode."
 
 
 ;; Global key bindings
+(define-key global-map (kbd "RET") 'newline-and-indent)
 (global-set-key [delete] 'delete-char)
 (global-set-key (kbd "<f1>") 'list-buffers)
 (global-set-key (kbd "<f2>") 'helm-projectile-find-file-in-known-projects)
@@ -492,12 +499,12 @@ With a prefix argument, use comint-mode."
 (global-set-key (kbd "C-<f1>") 'toggle-narrow-exand)
 (global-set-key (kbd "C-0") 'delete-window)
 (global-set-key (kbd "C-c f") 'iy-go-to-char)
+(define-key global-map (kbd "C-c o") 'iedit-mode)
 (global-set-key (kbd "C-c @ @") 'hs-hide-all)
 (global-set-key (kbd "C-c @ h") 'hs-hide-block)
 (global-set-key (kbd "C-c @ s") 'hs-show-block)
 (global-set-key (kbd "C-c @ SPC") 'hs-show-all)
-(define-key global-map (kbd "RET") 'newline-and-indent)
-(global-set-key (kbd "<s-return>") 'ansi-term)
+(global-set-key (kbd "C-x <down>") 'pop-global-mark)
 
 ;;(require 'ob-shell)
 ;;(org-babel-do-load-languages 'org-babel-load-languages '((sh . t )))
