@@ -4,6 +4,7 @@
 *** https://realpython.com/emacs-the-best-python-editor/ - article on emacs and python
 *** https://learnxinyminutes.com/docs/elisp/ - elisp tutorial
 *** https://sites.google.com/site/steveyegge2/effective-emacs - effective emacs
+*** https://oremacs.com - blog
 ** Videos
 *** https://magit.vc/screencasts/
 ** Podcasts
@@ -96,6 +97,7 @@ Useful podcast. Completed on 6.2.19. Reached #15.
 ** C-M-home                     Goto start of function
 ** C-M-end                      Goto end of function
 ** M-m                          Move to start of code line
+** C-u C-space                  Pop global mark
 * Narrowing
 ** C-x n d                        Narrow function
 ** C-x n w                        Expand back

@@ -462,7 +462,21 @@ With a prefix argument, use comint-mode."
   (switch-to-buffer "workflow.org")
   )
 
+(defun toggle-narrow-exand ()
+  "Toggle between narrow and expand region."
+  (interactive)
+  ;; use a property “state”. Value is t or nil
+  (if (get 'toggle-narrow-exand 'state)
+      (progn
+        (narrow-to-defun)
+        (put 'toggle-narrow-exand 'state nil))
+    (progn
+      (widen)
+      (put 'toggle-narrow-exand 'state t))))
+
+
 ;; Global key bindings
+(global-set-key [delete] 'delete-char)
 (global-set-key (kbd "<f1>") 'list-buffers)
 (global-set-key (kbd "<f2>") 'helm-projectile-find-file-in-known-projects)
 (global-set-key (kbd "<f3>") 'helm-semantic-or-imenu)
@@ -475,7 +489,7 @@ With a prefix argument, use comint-mode."
 (global-set-key (kbd "C-,") 'pop-global-mark)
 (global-set-key (kbd "C-.") 'helm-imenu-anywhere)
 (global-set-key (kbd "C-F") 'helm-projectile-ag)
-(global-set-key [delete] 'delete-char)
+(global-set-key (kbd "C-<f1>") 'toggle-narrow-exand)
 (global-set-key (kbd "C-0") 'delete-window)
 (global-set-key (kbd "C-c f") 'iy-go-to-char)
 (global-set-key (kbd "C-c @ @") 'hs-hide-all)
