@@ -14,11 +14,14 @@
 (setq compilation-ask-about-save nil)
 (setq inhibit-startup-message t)
 (setq make-backup-files nil)
+(setq auto-save-default nil)
 (setq visible-bell nil)
+(setq ring-bell-function 'ignore)
 (setq-default indent-tabs-mode -1)
 (show-paren-mode 1)                                        ;; turn on bracket match highlight
 (tool-bar-mode -1)
 (tooltip-mode -1)
+(setq tooltip-use-echo-area t)
 (which-function-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq next-line-add-newlines t)
@@ -29,10 +32,17 @@
 (size-indication-mode t)
 (set-language-environment "UTF-8")
 (electric-indent-mode 1)
+(setq scroll-conservatively 100)
+
 
 (add-hook 'prog-mode-hook (lambda () (hs-minor-mode 1)))
 
 (setq tramp-default-method "ssh")
+
+(defvar my-term-shell "/bin/bash")
+(defadvice ansi-term (before force-bash)
+  (interactive (list my-term-shell)))
+(ad-activate 'ansi-term)
 
 (defcustom endless/compile-window-size 105
   "Width given to the non-compilation window."
@@ -136,7 +146,7 @@ With a prefix argument, use comint-mode."
     (".#*" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "*/caffe_pb2.py" "tags")))
  '(package-selected-packages
    (quote
-    (imenu-anywhere free-keys iy-go-to-char company-anaconda company-quickhelp paredit flycheck-irony company-jedi irony-eldoc company-irony eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
+    (smartscan imenu-anywhere free-keys iy-go-to-char company-anaconda company-quickhelp paredit flycheck-irony company-jedi irony-eldoc company-irony eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 ;;(load-theme 'darkokai t)
@@ -443,6 +453,10 @@ With a prefix argument, use comint-mode."
 (use-package imenu-anywhere
   :ensure t)
 
+(use-package smartscan
+  :ensure t)
+(smartscan-mode t)
+
 (defun switch-to-workflow()
   (interactive)
   (switch-to-buffer "workflow.org")
@@ -453,6 +467,7 @@ With a prefix argument, use comint-mode."
 (global-set-key (kbd "<f2>") 'helm-projectile-find-file-in-known-projects)
 (global-set-key (kbd "<f3>") 'helm-semantic-or-imenu)
 (global-set-key (kbd "<f4>") 'bookmark-jump)
+(global-set-key (kbd "<f5>") 'ansi-term)
 (global-set-key (kbd "<f6>") 'switch-to-workflow)
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1)))
@@ -468,8 +483,36 @@ With a prefix argument, use comint-mode."
 (global-set-key (kbd "C-c @ s") 'hs-show-block)
 (global-set-key (kbd "C-c @ SPC") 'hs-show-all)
 (define-key global-map (kbd "RET") 'newline-and-indent)
+(global-set-key (kbd "<s-return>") 'ansi-term)
 
 ;;(require 'ob-shell)
 ;;(org-babel-do-load-languages 'org-babel-load-languages '((sh . t )))
 
 (highlight-indentation-mode 0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
