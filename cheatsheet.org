@@ -1,0 +1,5 @@
+* GDB
+** info scope <function name>
+* objcopy
+** --only-keep-debug <source binary> <target debug file>
+** --add-gnu-debuglink=<debug file> <binary>

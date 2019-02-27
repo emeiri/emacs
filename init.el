@@ -344,8 +344,6 @@ With a prefix argument, use comint-mode."
 (use-package expand-region
   :ensure t)
 
-
-
 (use-package web-mode
   :ensure t
   :config
@@ -480,6 +478,15 @@ With a prefix argument, use comint-mode."
       (widen)
       (put 'toggle-narrow-exand 'state t))))
 
+(defun copy-whole-line ()
+  "Copies a line without regard for cursor position."
+  (interactive)
+  (save-excursion
+    (kill-new
+     (buffer-substring
+      (point-at-bol)
+      (point-at-eol)))))
+
 
 ;; Global key bindings
 (define-key global-map (kbd "RET") 'newline-and-indent)
@@ -491,6 +498,7 @@ With a prefix argument, use comint-mode."
 (global-set-key (kbd "<f5>") 'ansi-term)
 (global-set-key (kbd "<f6>") 'switch-to-workflow)
 (global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "M-d") 'kill-whole-word)
 (global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1)))
 (global-set-key (kbd "M-=") 'er/expand-region)
 (global-set-key (kbd "C-,") 'pop-global-mark)
@@ -499,6 +507,7 @@ With a prefix argument, use comint-mode."
 (global-set-key (kbd "C-<f1>") 'toggle-narrow-exand)
 (global-set-key (kbd "C-0") 'delete-window)
 (global-set-key (kbd "C-c f") 'iy-go-to-char)
+(global-set-key (kbd "C-c l") 'copy-whole-line)
 (define-key global-map (kbd "C-c o") 'iedit-mode)
 (global-set-key (kbd "C-c @ @") 'hs-hide-all)
 (global-set-key (kbd "C-c @ h") 'hs-hide-block)
