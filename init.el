@@ -39,7 +39,7 @@
 (defadvice ansi-term (before force-bash)
   (interactive (list my-term-shell)))
 (ad-activate 'ansi-term)
-  
+
 
 (add-hook 'prog-mode-hook (lambda () (hs-minor-mode 1)))
 
@@ -94,7 +94,7 @@ With a prefix argument, use comint-mode."
 ;(use-package doom-themes
 ;  :ensure t
 ;  :config
-					;  (load-theme 'doom-one t))
+                                        ;  (load-theme 'doom-one t))
 (use-package zenburn-theme
   :ensure t
   :config (load-theme 'zenburn t))
@@ -123,7 +123,7 @@ With a prefix argument, use comint-mode."
     (global-set-key [remap other-window] 'ace-window)
     (custom-set-faces
      '(aw-leading-char-face
-       ((t (:inherit ace-jump-face-foreground :height 3.0))))) 
+       ((t (:inherit ace-jump-face-foreground :height 3.0)))))
     ))
 (global-set-key (kbd "M-o") 'ace-window)
 
@@ -152,7 +152,7 @@ With a prefix argument, use comint-mode."
     (".#*" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "*/caffe_pb2.py" "tags")))
  '(package-selected-packages
    (quote
-    (realgud dashboard smartscan imenu-anywhere free-keys iy-go-to-char company-anaconda company-quickhelp paredit flycheck-irony company-jedi irony-eldoc company-irony eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
+    (spaceline realgud dashboard smartscan imenu-anywhere free-keys iy-go-to-char company-anaconda company-quickhelp paredit flycheck-irony company-jedi irony-eldoc company-irony eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 ;;(load-theme 'darkokai t)
@@ -174,7 +174,7 @@ With a prefix argument, use comint-mode."
 ;(use-package yasnippet
 ;  :ensure t
 ;  :init
-					;  (yas-global-mode t))
+                                        ;  (yas-global-mode t))
 (load "~/.emacs.d/yasnippet.el")
 
 ;(setq tabbar-ruler-global-tabbar t)    ; get tabbar
@@ -216,11 +216,11 @@ With a prefix argument, use comint-mode."
       (run-with-timer 0.5 nil
                       (lambda (buf)
                        ; (bury-buffer buf)
-					; (switch-to-prev-buffer (get-buffer-window buf) 'kill)
-			(ace-window 1)
-			(delete-other-windows)
-			(message "Build OK")
-			)
+                                        ; (switch-to-prev-buffer (get-buffer-window buf) 'kill)
+                        (ace-window 1)
+                        (delete-other-windows)
+                        (message "Build OK")
+                        )
                       buffer)))
 (add-hook 'compilation-finish-functions 'bury-compile-buffer-if-successful)
 
@@ -260,11 +260,11 @@ With a prefix argument, use comint-mode."
       helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
       helm-ff-file-name-history-use-recentf t
       helm-echo-input-in-header-line t
-	  helm-M-x-fuzzy-match t ;; optional fuzzy matching for helm-M-x
-	  helm-buffers-fuzzy-matching t
-	  helm-recentf-fuzzy-match    t)
+          helm-M-x-fuzzy-match t ;; optional fuzzy matching for helm-M-x
+          helm-buffers-fuzzy-matching t
+          helm-recentf-fuzzy-match    t)
 (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
-	  
+
 
 (defun spacemacs//helm-hide-minibuffer-maybe ()
   "Hide minibuffer in Helm session if we use the header line as input field."
@@ -295,7 +295,7 @@ With a prefix argument, use comint-mode."
 
 (use-package elpy
   :ensure t
-  :config  
+  :config
   (elpy-enable))
 
 ; Fixing a key binding bug in elpy
@@ -332,7 +332,7 @@ With a prefix argument, use comint-mode."
   (global-undo-tree-mode))
 
 (use-package beacon
-:ensure ;TODO: 
+:ensure ;TODO:
 :config
 (beacon-mode 1))
 
@@ -349,18 +349,18 @@ With a prefix argument, use comint-mode."
   :config
   (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
   (setq web-mode-ac-sources-alist
-	'(("css" . (ac-source-css-property))
-	  ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
+        '(("css" . (ac-source-css-property))
+          ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
 (setq web-mode-enable-auto-closing t)
 (setq web-mode-enable-auto-quoting t)) ; this fixes the quote problem I mentioned
 
 (use-package ggtags
   :ensure t
-  :config 
+  :config
   (add-hook 'c-mode-common-hook
-	    (lambda ()
-	      (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-		(ggtags-mode 1))))
+            (lambda ()
+              (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
+                (ggtags-mode 1))))
   )
 
 (use-package smartparens
@@ -431,7 +431,7 @@ With a prefix argument, use comint-mode."
 
 (use-package pcre2el
   :ensure t
-  :config  
+  :config
   (pcre-mode))
 
 (use-package git-gutter
@@ -472,6 +472,16 @@ With a prefix argument, use comint-mode."
 
 (use-package realgud
   :ensure t)
+
+(use-package spaceline
+  :ensure t
+  :config
+  (require 'spaceline-config)
+  (setq spaceline-buffer-encoding-abbrev-p nil)
+  (setq spaceline-line-column-p nil)
+  (setq spaceline-line-p nil)
+  (setq powerline-default-separator (quote arrow))
+      (spaceline-spacemacs-theme))
 
 (defun switch-to-workflow()
   (interactive)
@@ -519,7 +529,65 @@ With a prefix argument, use comint-mode."
       (kill-new filename)
             (message "Copied buffer name '%s' to the clipboard." filename))))
 
+(defun cleanup-buffer-safe ()
+    "Perform a bunch of safe operations on the whitespace content of a buffer.
+Does not indent buffer, because it is used for a before-save-hook, and that
+might be bad."
+    (interactive)
+    (untabify (point-min) (point-max))
+    (delete-trailing-whitespace)
+    (set-buffer-file-coding-system 'utf-8))
 
+(defun rename-current-buffer-file ()
+  "Renames current buffer and file it is visiting."
+  (interactive)
+  (let ((name (buffer-name))
+        (filename (buffer-file-name)))
+    (if (not (and filename (file-exists-p filename)))
+        (error "Buffer '%s' is not visiting a file!" name)
+      (let ((new-name (read-file-name "New name: " filename)))
+        (if (get-buffer new-name)
+            (error "A buffer named '%s' already exists!" new-name)
+          (rename-file filename new-name 1)
+          (rename-buffer new-name)
+          (set-visited-file-name new-name)
+          (set-buffer-modified-p nil)
+          (message "File '%s' successfully renamed to '%s'"
+                                      name (file-name-nondirectory new-name)))))))
+
+(defun move-line-down ()
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines 1))
+    (forward-line)
+    (move-to-column col)))
+
+(defun move-line-up ()
+  (interactive)
+  (let ((col (current-column)))
+    (save-excursion
+      (forward-line)
+      (transpose-lines -1))
+    (forward-line -1)))
+    (move-to-column col)
+
+(defun open-line-below ()
+  (interactive)
+  (end-of-line)
+  (newline)
+  (indent-for-tab-command))
+
+(defun open-line-above ()
+  (interactive)
+  (beginning-of-line)
+  (newline)
+  (forward-line -1)
+    (indent-for-tab-command))
+
+;; Various superfluous white-space. Just say no.
+(add-hook 'before-save-hook 'cleanup-buffer-safe)
 
 ;; Global key bindings
 (define-key global-map (kbd "RET") 'newline-and-indent)
@@ -530,6 +598,8 @@ With a prefix argument, use comint-mode."
 (global-set-key (kbd "<f4>") 'bookmark-jump)
 (global-set-key (kbd "<f5>") 'ansi-term)
 (global-set-key (kbd "<f6>") 'switch-to-workflow)
+(global-set-key (kbd "M-<down>") 'move-line-down)
+(global-set-key (kbd "M-<up>") 'move-line-up)
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "M-d") 'kill-whole-word)
 (global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1)))
@@ -537,7 +607,15 @@ With a prefix argument, use comint-mode."
 (global-set-key (kbd "C-,") 'pop-global-mark)
 (global-set-key (kbd "C-.") 'helm-imenu-anywhere)
 (global-set-key (kbd "C-F") 'helm-projectile-ag)
+#(global-set-key (kbd "<C-return>" 'open-line-below)
+#(global-set-key (kbd "<C-S-RET>") 'open-line-above)
 (global-set-key (kbd "C-<f1>") 'toggle-narrow-exand)
+(global-set-key (kbd "C-<up>") (lambda ()
+                                 (interactive)
+                                 (ignore-errors (previous-line 5))))
+(global-set-key (kbd "C-<down>") (lambda ()
+                                 (interactive)
+                                 (ignore-errors (next-line 5))))
 (global-set-key (kbd "C-0") 'delete-window)
 (global-set-key (kbd "C-c f") 'iy-go-to-char)
 (global-set-key (kbd "C-c l") 'copy-whole-line)
@@ -547,35 +625,10 @@ With a prefix argument, use comint-mode."
 (global-set-key (kbd "C-c @ s") 'hs-show-block)
 (global-set-key (kbd "C-c @ SPC") 'hs-show-all)
 (global-set-key (kbd "C-x <down>") 'pop-global-mark)
+(global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
+
 
 ;;(require 'ob-shell)
 ;;(org-babel-do-load-languages 'org-babel-load-languages '((sh . t )))
 
 (highlight-indentation-mode 0)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

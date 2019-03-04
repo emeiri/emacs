@@ -10,3 +10,4 @@ ede-projects.el
 projectile-bookmarks.eld
 .emacs.desktop.lock
 *.pyc
+.python-environments/*
