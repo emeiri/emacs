@@ -152,7 +152,7 @@ With a prefix argument, use comint-mode."
     (".#*" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "*/caffe_pb2.py" "tags")))
  '(package-selected-packages
    (quote
-    (spaceline realgud dashboard smartscan imenu-anywhere free-keys iy-go-to-char company-anaconda company-quickhelp paredit flycheck-irony company-jedi irony-eldoc company-irony eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
+    (move-text spaceline realgud dashboard smartscan imenu-anywhere free-keys iy-go-to-char company-anaconda company-quickhelp paredit flycheck-irony company-jedi irony-eldoc company-irony eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 ;;(load-theme 'darkokai t)
@@ -483,6 +483,9 @@ With a prefix argument, use comint-mode."
   (setq powerline-default-separator (quote arrow))
       (spaceline-spacemacs-theme))
 
+(use-package move-text
+  :ensure t)
+
 (defun switch-to-workflow()
   (interactive)
   (switch-to-buffer "workflow.org")
@@ -555,24 +558,6 @@ might be bad."
           (message "File '%s' successfully renamed to '%s'"
                                       name (file-name-nondirectory new-name)))))))
 
-(defun move-line-down ()
-  (interactive)
-  (let ((col (current-column)))
-    (save-excursion
-      (forward-line)
-      (transpose-lines 1))
-    (forward-line)
-    (move-to-column col)))
-
-(defun move-line-up ()
-  (interactive)
-  (let ((col (current-column)))
-    (save-excursion
-      (forward-line)
-      (transpose-lines -1))
-    (forward-line -1)))
-    (move-to-column col)
-
 (defun open-line-below ()
   (interactive)
   (end-of-line)
@@ -598,8 +583,8 @@ might be bad."
 (global-set-key (kbd "<f4>") 'bookmark-jump)
 (global-set-key (kbd "<f5>") 'ansi-term)
 (global-set-key (kbd "<f6>") 'switch-to-workflow)
-(global-set-key (kbd "M-<down>") 'move-line-down)
-(global-set-key (kbd "M-<up>") 'move-line-up)
+(global-set-key (kbd "M-<down>") 'move-text-down)
+(global-set-key (kbd "M-<up>") 'move-text-up)
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "M-d") 'kill-whole-word)
 (global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1)))
@@ -607,12 +592,12 @@ might be bad."
 (global-set-key (kbd "C-,") 'pop-global-mark)
 (global-set-key (kbd "C-.") 'helm-imenu-anywhere)
 (global-set-key (kbd "C-F") 'helm-projectile-ag)
-#(global-set-key (kbd "<C-return>" 'open-line-below)
-#(global-set-key (kbd "<C-S-RET>") 'open-line-above)
+;(global-set-key (kbd "<C-return>" 'open-line-below)
+;(global-set-key (kbd "<C-S-RET>") 'open-line-above)
 (global-set-key (kbd "C-<f1>") 'toggle-narrow-exand)
 (global-set-key (kbd "C-<up>") (lambda ()
-                                 (interactive)
                                  (ignore-errors (previous-line 5))))
+                                 (interactive)
 (global-set-key (kbd "C-<down>") (lambda ()
                                  (interactive)
                                  (ignore-errors (next-line 5))))
