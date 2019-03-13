@@ -15,17 +15,17 @@ Very good coverage of many topic. Reached #53.
 *** [[https://www.youtube.com/playlist?list%3DPLBe790OrTEO44ScmDr3BpKeHS-f8FeDAv][emacs config by Aritra Bhattacharjee]]
 Useful podcast. Completed on 6.2.19. Reached #15.
 *** [[https://www.youtube.com/playlist?list%3DPLVfFIUHWy-aNaF08m34sO81dsVr4L7uI-][Emacs rocks]]
-Very short and advanced topics. Completed on 21.2.19. Reached #17. Need to do this again.
+    Very short and advanced topics. Completed on 21.2.19. Reached #17. Need to do this again.
+*** [[https://www.youtube.com/playlist?list%3DPLX2044Ew-UVVv31a0-Qn3dA6Sd_-NyA1n][Emacs by Uncle Dave]]
+Currently watching
 *** [[https://www.youtube.com/channel/UC1O8700SW-wuC4fvDEoGzOw/feed][Emacs Berlin]]
 *** [[https://www.youtube.com/playlist?list%3DPLxj9UAX4Em-IiOfvF2Qs742LxEK4owSkr][Emacs tutorials by Jekor]]
 *** [[https://www.youtube.com/playlist?list%3DPLABBCB510477C08DB][Hack Emacs]] - by Rick Dillon
 *** [[https://www.youtube.com/channel/UClT2UAbC6j7TqOWurVhkuHQ][Sacha Chua]]
-
-*** [[https://www.youtube.com/playlist?list%3DPLX2044Ew-UVVv31a0-Qn3dA6Sd_-NyA1n][Emacs by Uncle Dave]]
 ** Interesting packages
 *** dump-jump - zero effort tag jumping system
 *** emmet mode - html/css editing
-    
+
 *** key-chord - binds simulteneous key strokes (see emacs rocks #72)
 
 * Arguments
@@ -43,15 +43,15 @@ Very short and advanced topics. Completed on 21.2.19. Reached #17. Need to do th
 ** C-x r b - jump to bookmark
 ** C-x r l - list bookmarks
 * Display
-** C-x C-+			Increase font size
-** C-l                              Center display on cursor                       
+** C-x C-+                      Increase font size
+** C-l                              Center display on cursor
 * Editing
 ** M-1 M-(                  Close parenthesis after next token
 ** M-/                             Switch between auto-complete options
 ** M-;                             Add comment at the end of the current line
 ** C-x C-;                       Comment/Uncomment the current line
 
-** C-_ 			       Undo one entry in the current buffer's undo records (undo).
+** C-_                         Undo one entry in the current buffer's undo records (undo).
 ** M-/                             Expand word
 ** M-d                            Delete word forward
 ** M-backspace             Delete word backward
@@ -59,10 +59,10 @@ Very short and advanced topics. Completed on 21.2.19. Reached #17. Need to do th
 * Elpy
 ** C-c C-d                      Show documentation
 * ETags
-** M-.         		        Jump to the tag underneath the cursor
+** M-.                          Jump to the tag underneath the cursor
 ** M-. <tag>                  Search for a particular tag
-** C-u M-.			Find the next definition for the last tag
-** M-,				Pop back to where you previously invoked "M-."
+** C-u M-.                      Find the next definition for the last tag
+** M-,                          Pop back to where you previously invoked "M-."
 * General
 ** C-x z                          Repeat last command
 * Helm
@@ -77,8 +77,8 @@ Very short and advanced topics. Completed on 21.2.19. Reached #17. Need to do th
 ** Fundamental
 *** C-f, C-b, C-n, C-p          Right, left, Down, Up
 ** By word
-*** M-b				Jump word backwards
-*** M-f				Jump word forward
+*** M-b                         Jump word backwards
+*** M-f                         Jump word forward
 ** By sentence
 *** M-a                         Start
 *** M-e                         End
@@ -90,10 +90,10 @@ Very short and advanced topics. Completed on 21.2.19. Reached #17. Need to do th
 *** M-v                         Up
 *** C-M-v                       Other window
 ** Buffer
-*** ESC-<			Move to the top of the buffer (beginning-of-buffer). With numeric argument n, move to n/10 of the way from the top. On graphical displays, C-<HOME> does the same. 
-*** ESC->			Move to the bottom of the buffer
-** ALT-g n 		        Goto next error
-** ALT-g p 		        Goto previous error
+*** ESC-<                       Move to the top of the buffer (beginning-of-buffer). With numeric argument n, move to n/10 of the way from the top. On graphical displays, C-<HOME> does the same.
+*** ESC->                       Move to the bottom of the buffer
+** ALT-g n                      Goto next error
+** ALT-g p                      Goto previous error
 ** M-g g                        Goto line
 ** C-M-home                     Goto start of function
 ** C-M-end                      Goto end of function
@@ -115,13 +115,13 @@ Very short and advanced topics. Completed on 21.2.19. Reached #17. Need to do th
 ** C-x r spc                    Store
 ** C-x r j                      Jump
 * Search
-** C-s				Incremental search forward (isearch-forward). 
-** C-r				Incremental search backward (isearch-backward).
-** C-s C-w			Search word under cursor
-** C-M-s			        Regexp search
-** A-s o			        Occurances dispaly
+** C-s                          Incremental search forward (isearch-forward).
+** C-r                          Incremental search backward (isearch-backward).
+** C-s C-w                      Search word under cursor
+** C-M-s                                Regexp search
+** A-s o                                Occurances dispaly
 ** M-p                            Load previous search string
 ** C-;                             iedit-mode
 ** C-'                             Show only selected lines in iedit-mode
 * Window
-** C-x o   		Select another window (other-window). 
+** C-x o                Select another window (other-window).

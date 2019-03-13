@@ -1,5 +1,8 @@
 * GDB
 ** info scope <function name>
+** update memory
+set {char} addr = 'A'
+set $eax = 5
 * objcopy
 ** --only-keep-debug <source binary> <target debug file>
 ** --add-gnu-debuglink=<debug file> <binary>
