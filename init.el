@@ -35,12 +35,6 @@
 (setq scroll-conservatively 100)
 
 
-(defvar my-term-shell "/bin/bash")
-(defadvice ansi-term (before force-bash)
-  (interactive (list my-term-shell)))
-(ad-activate 'ansi-term)
-
-
 (add-hook 'prog-mode-hook (lambda () (hs-minor-mode 1)))
 
 (setq tramp-default-method "ssh")
@@ -473,15 +467,15 @@ With a prefix argument, use comint-mode."
 (use-package realgud
   :ensure t)
 
-(use-package spaceline
-  :ensure t
-  :config
-  (require 'spaceline-config)
-  (setq spaceline-buffer-encoding-abbrev-p nil)
-  (setq spaceline-line-column-p nil)
-  (setq spaceline-line-p nil)
-  (setq powerline-default-separator (quote arrow))
-      (spaceline-spacemacs-theme))
+;(use-package spaceline
+;  :ensure t
+;  :config
+;  (require 'spaceline-config)
+;  (setq spaceline-buffer-encoding-abbrev-p nil)
+;  (setq spaceline-line-column-p nil)
+;  (setq spaceline-line-p nil)
+;  (setq powerline-default-separator (quote arrow))
+;  (spaceline-spacemacs-theme))
 
 (use-package move-text
   :ensure t)
@@ -571,8 +565,23 @@ might be bad."
   (forward-line -1)
     (indent-for-tab-command))
 
+(defun kill-whole-word ()
+  "Kills the entire word your cursor is in. Equivalent to 'ciw' in vim."
+  (interactive)
+  (forward-char 1)
+  (backward-word)
+  (kill-word 1))
+
 ;; Various superfluous white-space. Just say no.
 (add-hook 'before-save-hook 'cleanup-buffer-safe)
+
+(defun switch-to-term()
+  "Switch to terminal or create if does not exist"
+  (interactive)
+  (if (get-buffer "*ansi-term*")
+    (switch-to-buffer "*ansi-term*")
+    (ansi-term "/bin/bash")))
+
 
 ;; Global key bindings
 (define-key global-map (kbd "RET") 'newline-and-indent)
@@ -581,12 +590,14 @@ might be bad."
 (global-set-key (kbd "<f2>") 'helm-projectile-find-file-in-known-projects)
 (global-set-key (kbd "<f3>") 'helm-semantic-or-imenu)
 (global-set-key (kbd "<f4>") 'bookmark-jump)
-(global-set-key (kbd "<f5>") 'ansi-term)
-(global-set-key (kbd "<f6>") 'switch-to-workflow)
+(global-set-key (kbd "<f5>") 'switch-to-term)
+;(global-set-key (kbd "<f6>") 'switch-to-workflow)
+(global-set-key (kbd "<f6>") 'avy-goto-word-1)
 (global-set-key (kbd "M-<down>") 'move-text-down)
 (global-set-key (kbd "M-<up>") 'move-text-up)
 (global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "M-d") 'kill-whole-word)
+(global-set-key (kbd "M-d") 'kill-word)
+(global-set-key (kbd "C-M-d") 'kill-whole-word)
 (global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1)))
 (global-set-key (kbd "M-=") 'er/expand-region)
 (global-set-key (kbd "C-,") 'pop-global-mark)
@@ -616,4 +627,4 @@ might be bad."
 ;;(require 'ob-shell)
 ;;(org-babel-do-load-languages 'org-babel-load-languages '((sh . t )))
 
-(highlight-indentation-mode 0)
+(highlight-indentation-mode nil)

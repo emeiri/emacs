@@ -13,15 +13,17 @@ Very good coverage of many topic. Reached #53.
 *** [[https://www.youtube.com/playlist?list=PLrFss89N5XNw8rTgI2fVhSj9Y62TpphFI][Emacs is great]]
     Topics are interesting but the presenter is very bad. Reached Ep 3 on Magit.
 *** [[https://www.youtube.com/playlist?list%3DPLBe790OrTEO44ScmDr3BpKeHS-f8FeDAv][emacs config by Aritra Bhattacharjee]]
-Useful podcast. Completed on 6.2.19. Reached #15.
+    Useful podcast. Completed on 6.2.19. Reached #15.
 *** [[https://www.youtube.com/playlist?list%3DPLVfFIUHWy-aNaF08m34sO81dsVr4L7uI-][Emacs rocks]]
-Very short and advanced topics. Completed on 21.2.19. Reached #17. Need to do this again.
-*** [[https://www.youtube.com/channel/UC1O8700SW-wuC4fvDEoGzOw/feed][Emacs Berlin]]
+    Very short and advanced topics. Completed on 21.2.19. Reached #17. Need to do this again.
+*** [[https://www.youtube.com/playlist?list%3DPLX2044Ew-UVVv31a0-Qn3dA6Sd_-NyA1n][Emacs by Uncle Dave]]
+    Good coverage of various topics. Completed on 17.3.19. Reached #20. 
 *** [[https://www.youtube.com/playlist?list%3DPLxj9UAX4Em-IiOfvF2Qs742LxEK4owSkr][Emacs tutorials by Jekor]]
+    Currently watching
+*** Alex Koval
+*** [[https://www.youtube.com/channel/UC1O8700SW-wuC4fvDEoGzOw/feed][Emacs Berlin]]
 *** [[https://www.youtube.com/playlist?list%3DPLABBCB510477C08DB][Hack Emacs]] - by Rick Dillon
 *** [[https://www.youtube.com/channel/UClT2UAbC6j7TqOWurVhkuHQ][Sacha Chua]]
-
-*** [[https://www.youtube.com/playlist?list%3DPLX2044Ew-UVVv31a0-Qn3dA6Sd_-NyA1n][Emacs by Uncle Dave]]
 ** Interesting packages
 *** dump-jump - zero effort tag jumping system
 *** emmet mode - html/css editing
