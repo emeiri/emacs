@@ -1,4 +1,25 @@
 * GDB
+** Build Flags
+*** gcc -Og        Optimized build but doesn't mess up debug
+*** -ggdb3 better than -g
+** TUI mode
+*** Change to TUI mode - C-x-a
+*** Refresh screen - C-l
+*** Multiple windows - C-x 2 or C-x 1
+*** Next/prev - C-n and C-p
+** Reverse debugging
+Set two breakpoints. Breakpoint 1 is before and breakpoint 2 is after.
+(gdb) command 1
+record
+continue
+end
+(gdb) command 2
+run 
+(gdb) set pagination off
+(gdb) reverse-stepi
+Place a watch on the current value of $sp
+(gdb) reverse-continue
+** set disassembly-flavor
 ** info scope <function name>
 ** update memory
 set {char} addr = 'A'
@@ -6,9 +27,54 @@ set $eax = 5
 ** conditional breakpoint
 condition 1 counter == 5
 condition 2 $eax != 0
+** Threads
+*** thread apply all backtrace full
+** dprintf
+** Catchpoints
+*** catch catch - stop when C++ exceptions are caught
+*** catch syscall <syscall> - stop when syscall is called
+** Remote debugging
+Start: gdbserver localhost:2000 ./app
+Connect: target remote localhost:2000
+** Multi process debugging
+*** set follow-fork-mode child|parent
+*** set detach-on-fork off
+*** info inferiors
+*** inferior N
+*** set follow-exec-mode new|same
+*** add-inferior <count> <name>
+*** remove-inferior N
+*** clone-inferior
+*** print $_inferior
 * objcopy
 ** --only-keep-debug <source binary> <target debug file>
 ** --add-gnu-debuglink=<debug file> <binary>
+* od
+od -t d4 - display 4 bytes integer
 * Python
 ** Dictionary
 *** Traverse key and value - for key, value in dictionary.items()
+* tmux
+** Windows
+*** C-b        Prefix command to tmux
+*** C-b-c      New window
+*** C-b-,      Rename window
+*** C-b-p                        Previous window
+*** C-b-n                        Next window
+*** C-b-w                        List windows
+*** C-b-&                        Kill window
+** Panes
+*** C-b-%                        Split pane horiz
+*** C-b-: split-window           Split pane vert
+*** C-b-{ or }                   Move pane left or right
+*** C-b-z                        Toggle pane zoom
+*** C-[space]                    Cycle pane layouts
+*** C-b-x                        Close pane
+** Session
+*** tmux new -s <session name>      Create new session
+*** C-b-d                           Detach session
+*** tmux ls                         List sessions
+*** tmux attach -t <session>        Attach to session
+*** tmux kill-session -t <session>  Kill session
+* Valgrind
+** valgrind --vgdb --vgdb-error=0 <prog>

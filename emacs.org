@@ -5,9 +5,12 @@
 *** https://learnxinyminutes.com/docs/elisp/ - elisp tutorial
 *** https://sites.google.com/site/steveyegge2/effective-emacs - effective emacs
 *** https://oremacs.com - blog
-** Videos
-*** https://magit.vc/screencasts/
-** Podcasts
+*** http://cachestocaches.com/2015/8/c-completion-emacs/ - company irony setup
+** .emacs files
+*** Casey Muratory - https://github.com/ecxr/handmadehero/blob/master/misc/.emacs
+*** Uncle Dave - https://github.com/daedreth/UncleDavesEmacs
+*** Emacs Rocks - https://github.com/magnars/.emacs.d
+** Podcasts / Videos
 *** [[https://www.youtube.com/playlist?list=PL9KxKa8NpFxIcNQa9js7dQQIHc81b0-Xg][Mike Zamensky - Using Emacs blog]]
 Very good coverage of many topic. Reached #53.
 *** [[https://www.youtube.com/playlist?list=PLrFss89N5XNw8rTgI2fVhSj9Y62TpphFI][Emacs is great]]
@@ -19,16 +22,31 @@ Very good coverage of many topic. Reached #53.
 *** [[https://www.youtube.com/playlist?list%3DPLX2044Ew-UVVv31a0-Qn3dA6Sd_-NyA1n][Emacs by Uncle Dave]]
     Good coverage of various topics. Completed on 17.3.19. Reached #20. 
 *** [[https://www.youtube.com/playlist?list%3DPLxj9UAX4Em-IiOfvF2Qs742LxEK4owSkr][Emacs tutorials by Jekor]]
-    Currently watching
+    Short series. A few advanced topics. Completed on 8.4.19. Reached #9.
+*** DevTech solutions - Emacs
+    Very basic. No replay value. Finished on 8.4.19. Reached #5.
+*** Emacs tutorial by Casey Muratori
+Very basic. No replay value. He has a few tricks in his .emacs that I should review. Finished on 12.4.19.
+*** Emacs by the TruthSeekers
+*** Emacs Rocks - Extending Emacs
 *** Alex Koval
 *** [[https://www.youtube.com/channel/UC1O8700SW-wuC4fvDEoGzOw/feed][Emacs Berlin]]
 *** [[https://www.youtube.com/playlist?list%3DPLABBCB510477C08DB][Hack Emacs]] - by Rick Dillon
 *** [[https://www.youtube.com/channel/UClT2UAbC6j7TqOWurVhkuHQ][Sacha Chua]]
+*** Magit - https://magit.vc/screencasts/
+
+** Workflow demonstrations
+*** https://www.youtube.com/watch?v=CTOhosGQ2f0
 ** Interesting packages
 *** dump-jump - zero effort tag jumping system
 *** emmet mode - html/css editing
 
 *** key-chord - binds simulteneous key strokes (see emacs rocks #72)
+
+* TODO list
+** Quickly switch between header and cpp. Possibly in another windows.
+** Replace inside pasted block - Casey explains it.
+
 
 * Arguments
 ** Numeric arguments
@@ -44,6 +62,12 @@ Very good coverage of many topic. Reached #53.
 ** C-x r m - set bookmark
 ** C-x r b - jump to bookmark
 ** C-x r l - list bookmarks
+* Dired
+** Create a new file: type the desired name and press C-j.
+** Create a directory: +
+** Rename a file/directory: R
+** Delete: mark by 'd' and execute by 'x'
+** Move: mark by 'm' and execute by 'R'
 * Display
 ** C-x C-+                      Increase font size
 ** C-l                              Center display on cursor
@@ -52,12 +76,13 @@ Very good coverage of many topic. Reached #53.
 ** M-/                             Switch between auto-complete options
 ** M-;                             Add comment at the end of the current line
 ** C-x C-;                       Comment/Uncomment the current line
-
 ** C-_                         Undo one entry in the current buffer's undo records (undo).
 ** M-/                             Expand word
 ** M-d                            Delete word forward
 ** M-backspace             Delete word backward
+** C-M-\                   Indent region
 ** C-M-k                   Kill until end of sexp
+** C-c DEL                 Hungry Delete               
 * Elpy
 ** C-c C-d                      Show documentation
 * ETags
@@ -65,6 +90,8 @@ Very good coverage of many topic. Reached #53.
 ** M-. <tag>                  Search for a particular tag
 ** C-u M-.                      Find the next definition for the last tag
 ** M-,                          Pop back to where you previously invoked "M-."
+** M-n and M-p                  Goto the next/prev option in the tag list
+* Important Emacs Fixes
 * General
 ** C-x z                          Repeat last command
 * Helm
@@ -73,8 +100,15 @@ Very good coverage of many topic. Reached #53.
 ** M-y                             Show kill ring
 * Help
 ** C-h P                          Help on packages
+* Macros
+** C-x-(                   Start macro
+** C-x-)                   Stop macro
+** C-x-e                   Replay macro
+** C-x C-k space           Macro debugger
 * Marking text
 ** C-=                            Expand region
+** C-M-SPC                       Mark the next sexp
+** C-M-h                         Mark the current function
 * Movement
 ** Fundamental
 *** C-f, C-b, C-n, C-p          Right, left, Down, Up
@@ -113,10 +147,10 @@ Very good coverage of many topic. Reached #53.
 ** C-x-r-k                       Kill rectangle
 ** C-x-r-y                       Yank rectangle
 ** C-x-r-t                       String replace
-* Registers
+fw* Registers
 ** C-x r spc                    Store
 ** C-x r j                      Jump
-* Search
+Search
 ** C-s                          Incremental search forward (isearch-forward).
 ** C-r                          Incremental search backward (isearch-backward).
 ** C-s C-w                      Search word under cursor
