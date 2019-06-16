@@ -96,6 +96,8 @@ Currently watching
 ** M-,                          Pop back to where you previously invoked "M-."
 ** M-n and M-p                  Goto the next/prev option in the tag list
 * Important Emacs Fixes
+* Files
+** M-x ffap - find-file-at-point
 * General
 ** C-x z                          Repeat last command
 * Helm
