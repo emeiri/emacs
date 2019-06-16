@@ -1,4 +1,4 @@
-;;;; Emacs Bookmark Format Version 1 ;;;;
+;;;; Emacs Bookmark Format Version 1 ;;;; -*- coding: utf-8-emacs -*- 
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
@@ -13,7 +13,7 @@
  (rear-context-string)
  (position . 1))
 ("resnet_prototxt"
- (filename . "~/xeon_dnn-caffe/resnet/ResNet-50.direct_conv2.prototxt")
+ (filename . "~/master/resnet/ResNet-50.direct_conv3.prototxt")
  (front-context-string . "state {\n  phase:")
  (rear-context-string)
  (position . 1))
