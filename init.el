@@ -9,6 +9,7 @@
 (global-linum-mode -1)                                      ;; show line numbers
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
+
 (set-face-attribute 'default nil :height 150)
 (setq auto-window-vscroll nil)
 (setq compilation-ask-about-save nil)
@@ -17,6 +18,7 @@
 (setq auto-save-default nil)
 (setq visible-bell nil)
 (setq ring-bell-function 'ignore)
+
 (setq-default indent-tabs-mode -1)
 (show-paren-mode 1)                                        ;; turn on bracket match highlight
 (tool-bar-mode -1)
@@ -25,6 +27,7 @@
 (which-function-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq next-line-add-newlines t)
+
 (winner-mode 1)
 (normal-erase-is-backspace-mode 0)
 (setq column-number-mode t)
@@ -33,6 +36,8 @@
 (set-language-environment "UTF-8")
 (electric-indent-mode 1)
 (setq scroll-conservatively 100)
+(set-frame-font "Hack 15" nil t)
+(setq create-lockfiles nil)
 
 
 (add-hook 'prog-mode-hook (lambda () (hs-minor-mode 1)))
@@ -119,6 +124,7 @@ With a prefix argument, use comint-mode."
      '(aw-leading-char-face
        ((t (:inherit ace-jump-face-foreground :height 3.0)))))
     ))
+
 (global-set-key (kbd "M-o") 'ace-window)
 
 ;;(load "~/.emacs.d/counsel.el")
@@ -146,7 +152,7 @@ With a prefix argument, use comint-mode."
     (".#*" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "*/caffe_pb2.py" "tags")))
  '(package-selected-packages
    (quote
-    (move-text spaceline realgud dashboard smartscan imenu-anywhere free-keys iy-go-to-char company-anaconda company-quickhelp paredit flycheck-irony company-jedi irony-eldoc company-irony eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
+    (ztree move-text spaceline realgud dashboard smartscan imenu-anywhere free-keys iy-go-to-char company-anaconda company-quickhelp paredit flycheck-irony company-jedi irony-eldoc company-irony eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 ;;(load-theme 'darkokai t)
@@ -156,7 +162,6 @@ With a prefix argument, use comint-mode."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:height 150 :family "Hack"))))
  '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))
 
 
@@ -285,6 +290,7 @@ With a prefix argument, use comint-mode."
 (setq projectile-switch-project-action 'helm-projectile)
 (setq projectile-globally-ignored-files '("GTAGS" "GRTAGS"))
 (setq projectile-enable-caching t)
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 
 (use-package elpy
@@ -414,7 +420,7 @@ With a prefix argument, use comint-mode."
   (:map global-map
         ("M-0"       . treemacs-select-window)
         ("C-x t 1"   . treemacs-delete-other-windows)
-        ("<f12>"     . treemacs)
+;        ("<f12>"     . treemacs)
         ("C-x t B"   . treemacs-bookmark)
         ("C-x t C-t" . treemacs-find-file)
         ("C-x t M-t" . treemacs-find-tag)))
@@ -455,14 +461,13 @@ With a prefix argument, use comint-mode."
   :ensure t)
 (smartscan-mode t)
 
-(use-package dashboard
-  :ensure t
-  :config
-    (dashboard-setup-startup-hook)
-    (setq dashboard-startup-banner "~/.emacs.d/img/dashLogo.png")
-    (setq dashboard-items '((recents  . 5)
-                            (projects . 5)))
-    (setq dashboard-banner-logo-title ""))
+;(use-package dashboard
+;  :ensure t
+;  :config
+;    (dashboard-setup-startup-hook)
+;    (setq dashboard-startup-banner "~/.emacs.d/img/dashLogo.png")
+;    (setq dashboard-items '((recents  . 5) (projects . 5)))
+;    (setq dashboard-banner-logo-title ""))
 
 (use-package realgud
   :ensure t)
@@ -582,6 +587,13 @@ might be bad."
     (switch-to-buffer "*ansi-term*")
     (ansi-term "/bin/bash")))
 
+(defun open-next-line()
+  "Open a new line below"
+  (interactive)
+  (move-end-of-line 1)
+  (newline-and-indent)
+  )
+
 
 ;; Global key bindings
 (define-key global-map (kbd "RET") 'newline-and-indent)
@@ -593,6 +605,7 @@ might be bad."
 (global-set-key (kbd "<f5>") 'switch-to-term)
 ;(global-set-key (kbd "<f6>") 'switch-to-workflow)
 (global-set-key (kbd "<f6>") 'avy-goto-word-1)
+(global-set-key (kbd "<f12>") 'open-next-line)
 (global-set-key (kbd "M-<down>") 'move-text-down)
 (global-set-key (kbd "M-<up>") 'move-text-up)
 (global-set-key (kbd "M-/") 'hippie-expand)
@@ -606,6 +619,7 @@ might be bad."
 ;(global-set-key (kbd "<C-return>" 'open-line-below)
 ;(global-set-key (kbd "<C-S-RET>") 'open-line-above)
 (global-set-key (kbd "C-<f1>") 'toggle-narrow-exand)
+(global-set-key (kbd "C-<f3>") 'helm-gtags-select)
 (global-set-key (kbd "C-<up>") (lambda ()
                                  (interactive)
                                  (ignore-errors (next-line -5))))
@@ -628,3 +642,7 @@ might be bad."
 ;;(org-babel-do-load-languages 'org-babel-load-languages '((sh . t )))
 
 (highlight-indentation-mode nil)
+
+
+(use-package ztree
+  :ensure t)

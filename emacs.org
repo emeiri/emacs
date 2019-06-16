@@ -20,7 +20,7 @@ Very good coverage of many topic. Reached #53.
 *** [[https://www.youtube.com/playlist?list%3DPLVfFIUHWy-aNaF08m34sO81dsVr4L7uI-][Emacs rocks]]
     Very short and advanced topics. Completed on 21.2.19. Reached #17. Need to do this again.
 *** [[https://www.youtube.com/playlist?list%3DPLX2044Ew-UVVv31a0-Qn3dA6Sd_-NyA1n][Emacs by Uncle Dave]]
-    Good coverage of various topics. Completed on 17.3.19. Reached #20. 
+    Good coverage of various topics. Completed on 17.3.19. Reached #20.
 *** [[https://www.youtube.com/playlist?list%3DPLxj9UAX4Em-IiOfvF2Qs742LxEK4owSkr][Emacs tutorials by Jekor]]
     Short series. A few advanced topics. Completed on 8.4.19. Reached #9.
 *** DevTech solutions - Emacs
@@ -28,13 +28,16 @@ Very good coverage of many topic. Reached #53.
 *** Emacs tutorial by Casey Muratori
 Very basic. No replay value. He has a few tricks in his .emacs that I should review. Finished on 12.4.19.
 *** Emacs by the TruthSeekers
-*** Emacs Rocks - Extending Emacs
+Basic. Completed. Reached #6.
 *** Alex Koval
-*** [[https://www.youtube.com/channel/UC1O8700SW-wuC4fvDEoGzOw/feed][Emacs Berlin]]
+Not very useful.
 *** [[https://www.youtube.com/playlist?list%3DPLABBCB510477C08DB][Hack Emacs]] - by Rick Dillon
+Currently watching
+*** [[https://www.youtube.com/channel/UC1O8700SW-wuC4fvDEoGzOw/feed][Emacs Berlin]]
 *** [[https://www.youtube.com/channel/UClT2UAbC6j7TqOWurVhkuHQ][Sacha Chua]]
 *** Magit - https://magit.vc/screencasts/
-
+*** Emacs Rocks - Extending Emacs
+*** VIM screencasts
 ** Workflow demonstrations
 *** https://www.youtube.com/watch?v=CTOhosGQ2f0
 ** Interesting packages
@@ -47,6 +50,7 @@ Very basic. No replay value. He has a few tricks in his .emacs that I should rev
 ** Quickly switch between header and cpp. Possibly in another windows.
 ** Replace inside pasted block - Casey explains it.
 
+** Enable auto highlight of current symbol
 
 * Arguments
 ** Numeric arguments
@@ -82,7 +86,7 @@ Very basic. No replay value. He has a few tricks in his .emacs that I should rev
 ** M-backspace             Delete word backward
 ** C-M-\                   Indent region
 ** C-M-k                   Kill until end of sexp
-** C-c DEL                 Hungry Delete               
+** C-c DEL                 Hungry Delete
 * Elpy
 ** C-c C-d                      Show documentation
 * ETags

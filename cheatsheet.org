@@ -1,3 +1,12 @@
+* Bash
+** Loop
+for i in {1..5}
+do
+   echo "Welcome $i times"
+done
+* objcopy
+** --only-keep-debug <source binary> <target debug file>
+** --add-gnu-debuglink=<debug file> <binary>
 * GDB
 ** Build Flags
 *** gcc -Og        Optimized build but doesn't mess up debug
@@ -14,7 +23,7 @@ record
 continue
 end
 (gdb) command 2
-run 
+run
 (gdb) set pagination off
 (gdb) reverse-stepi
 Place a watch on the current value of $sp
@@ -46,9 +55,9 @@ Connect: target remote localhost:2000
 *** remove-inferior N
 *** clone-inferior
 *** print $_inferior
-* objcopy
-** --only-keep-debug <source binary> <target debug file>
-** --add-gnu-debuglink=<debug file> <binary>
+* GIT
+** Patches
+*** Create patch for single commit: git format-patch -1 <SHA1> or <branch name>
 * od
 od -t d4 - display 4 bytes integer
 * Python
@@ -59,7 +68,7 @@ od -t d4 - display 4 bytes integer
 *** C-b        Prefix command to tmux
 *** C-b-c      New window
 *** C-b-,      Rename window
-*** C-b-p                        Previous window
+*** C-b-p                       Previous window
 *** C-b-n                        Next window
 *** C-b-w                        List windows
 *** C-b-&                        Kill window
