@@ -38,6 +38,7 @@
 (setq scroll-conservatively 100)
 (set-frame-font "Hack 15" nil t)
 (setq create-lockfiles nil)
+(setq compilation-auto-jump-to-first-error t)
 
 
 (add-hook 'prog-mode-hook (lambda () (hs-minor-mode 1)))
@@ -226,6 +227,8 @@ With a prefix argument, use comint-mode."
 (require 'semantic)
 (global-semanticdb-minor-mode 1)
 (global-semantic-idle-scheduler-mode 1)
+(global-semantic-idle-summary-mode 1)
+(setq semantic-idle-scheduler-no-working-message t)
 (semantic-mode 1)
 
 (defun my::add-semantic-to-ac()
@@ -628,7 +631,8 @@ might be bad."
                                  (ignore-errors (next-line 5))))
 (global-set-key (kbd "C-0") 'delete-window)
 (global-set-key (kbd "C-c f") 'iy-go-to-char)
-(global-set-key (kbd "C-c l") 'copy-whole-line)
+(global-set-key (kbd "C-l") 'copy-whole-line)
+(global-set-key (kbd "C-c l") 'recenter-top-bottom)
 (define-key global-map (kbd "C-c o") 'iedit-mode)
 (global-set-key (kbd "C-c @ @") 'hs-hide-all)
 (global-set-key (kbd "C-c @ h") 'hs-hide-block)
@@ -636,13 +640,15 @@ might be bad."
 (global-set-key (kbd "C-c @ SPC") 'hs-show-all)
 (global-set-key (kbd "C-x <down>") 'pop-global-mark)
 (global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
-
+(global-set-key [remap forward-word] 'forward-to-word)
 
 ;;(require 'ob-shell)
 ;;(org-babel-do-load-languages 'org-babel-load-languages '((sh . t )))
 
 (highlight-indentation-mode nil)
 
-
 (use-package ztree
+  :ensure t)
+
+(use-package all-the-icons
   :ensure t)
