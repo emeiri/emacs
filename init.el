@@ -39,7 +39,7 @@
 (set-frame-font "Hack 15" nil t)
 (setq create-lockfiles nil)
 (setq compilation-auto-jump-to-first-error t)
-
+(transient-mark-mode nil)
 
 (add-hook 'prog-mode-hook (lambda () (hs-minor-mode 1)))
 
@@ -229,6 +229,7 @@ With a prefix argument, use comint-mode."
 (global-semantic-idle-scheduler-mode 1)
 (global-semantic-idle-summary-mode 1)
 (setq semantic-idle-scheduler-no-working-message t)
+(advice-add 'semantic-idle-scheduler-function :around #'ignore)
 (semantic-mode 1)
 
 (defun my::add-semantic-to-ac()
