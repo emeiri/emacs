@@ -9,7 +9,6 @@
 (global-linum-mode -1)                                      ;; show line numbers
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
-
 (set-face-attribute 'default nil :height 150)
 (setq auto-window-vscroll nil)
 (setq compilation-ask-about-save nil)
@@ -18,7 +17,6 @@
 (setq auto-save-default nil)
 (setq visible-bell nil)
 (setq ring-bell-function 'ignore)
-
 (setq-default indent-tabs-mode -1)
 (show-paren-mode 1)                                        ;; turn on bracket match highlight
 (tool-bar-mode -1)
@@ -27,7 +25,6 @@
 (which-function-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
 (setq next-line-add-newlines t)
-
 (winner-mode 1)
 (normal-erase-is-backspace-mode 0)
 (setq column-number-mode t)
@@ -130,14 +127,14 @@ With a prefix argument, use comint-mode."
 
 ;;(load "~/.emacs.d/counsel.el")
 
-(use-package swiper
-  :ensure try
+(use-package helm-swoop
+  :ensure t
   :config
-  (progn
-    (ivy-mode 1)
-    (setq ivy-use-virtual-buffers t)
+ ; (progn
+  ;  (ivy-mode 1)
+  ;  (setq ivy-use-virtual-buffers t)
     (global-set-key "\C-s" 'swiper)
-    ))
+    )
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -153,7 +150,7 @@ With a prefix argument, use comint-mode."
     (".#*" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "*/caffe_pb2.py" "tags")))
  '(package-selected-packages
    (quote
-    (ztree move-text spaceline realgud dashboard smartscan imenu-anywhere free-keys iy-go-to-char company-anaconda company-quickhelp paredit flycheck-irony company-jedi irony-eldoc company-irony eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
+    (helm-swoop swiper magit treemacs web-mode all-the-icons ztree move-text spaceline realgud dashboard smartscan imenu-anywhere free-keys iy-go-to-char company-anaconda company-quickhelp paredit flycheck-irony company-jedi irony-eldoc company-irony eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 ;;(load-theme 'darkokai t)
@@ -168,13 +165,9 @@ With a prefix argument, use comint-mode."
 
 ;; Choose autocomplete or company
 ;;(load "~/.emacs.d/ac.el")
-;(load "~/.emacs.d/company.el")
-(load "~/.emacs.d/company_aritra.el")
+(load "~/.emacs.d/company.el")
+;(load "~/.emacs.d/company_aritra.el")
 
-;(use-package yasnippet
-;  :ensure t
-;  :init
-                                        ;  (yas-global-mode t))
 (load "~/.emacs.d/yasnippet.el")
 
 ;(setq tabbar-ruler-global-tabbar t)    ; get tabbar
@@ -184,9 +177,8 @@ With a prefix argument, use comint-mode."
 ;(setq tabbar-ruler-popup-scrollbar t)  ; show scroll-bar on mouse-move
 ;(require 'tabbar-ruler)
 
-;(use-package iedit    ; C-; to edit all occurences of current string
-;  :ensure t)
-(require 'iedit)
+(use-package iedit    ; C-; to edit all occurences of current string
+  :ensure t)
 
 ;(global-flycheck-mode)
 ;(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
@@ -241,7 +233,10 @@ With a prefix argument, use comint-mode."
 ;(ede-cpp-root-project "ogldev" :file "/home/emeiri/ogldev/tutorial53/tutorial53.cpp" :include-path '("/home/emeiri/ogldev/"))
 
 ;; HELM
-(require 'helm)
+(use-package helm
+  :ensure t)
+(use-package helm-ag
+  :ensure t)
 (require 'helm-config)
 (helm-mode 1)
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
@@ -286,9 +281,14 @@ With a prefix argument, use comint-mode."
 (helm-autoresize-mode 1)
 
 ;; PROJECTILE
-(projectile-mode)
-(require 'helm-projectile)
-(helm-projectile-on)
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-mode))
+(use-package helm-projectile
+  :ensure t
+  :config
+  (helm-projectile-on))
 (setq projectile-completion-system 'helm)
 (setq projectile-project-search-path '("~/"))
 (setq projectile-switch-project-action 'helm-projectile)
@@ -327,8 +327,15 @@ With a prefix argument, use comint-mode."
 (use-package jedi
   :ensure t
   :init
-  (add-hook 'python-mode-hook 'jedi:setup)
-  (add-hook 'python-mode-hook 'jedi:ac-setup))
+  (add-hook 'python-mode-hook 'jedi:setup))
+;  (add-hook 'python-mode-hook 'jedi:ac-setup))
+
+(defun company-jedi-setup ()
+  (add-to-list 'company-backends 'company-jedi))
+(add-hook 'python-mode-hook 'company-jedi-setup)
+
+(setq jedi:setup-keys t)
+(setq jedi:complete-on-dot t)
 
 (use-package undo-tree
 :ensure t
