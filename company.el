@@ -7,7 +7,7 @@
 
 (use-package company-irony
 :ensure t
-:config 
+:config
 (add-to-list 'company-backends 'company-irony))
 
 (use-package irony
@@ -18,9 +18,9 @@
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options))
 
 ;(use-package irony-eldoc
-;:ensure t
-;:config
-(add-hook 'irony-mode-hook #'irony-eldoc)
+;  :ensure t
+;  :config
+;  (add-hook 'irony-mode-hook #'irony-eldoc))
 
 (use-package company-jedi
     :ensure t
