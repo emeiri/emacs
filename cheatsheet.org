@@ -60,6 +60,9 @@ Connect: target remote localhost:2000
 *** Create patch for single commit: git format-patch -1 <SHA1> or <branch name>
 * od
 od -t d4 - display 4 bytes integer
+* perf
+sudo perf sched record -a -- sleep 65s && sudo perf sched latency | sort -k3 -nr | tee perf-sched-latency_tur5-notag.txt | egrep -v "perf|sleep" | head
+sudo perf record -ag -e cycles:k -- sleep 10s && sudo perf report --no-children | tee perf-report-cyclesK_tur5-notag.txt | head -35 | tail -30
 * Python
 ** Dictionary
 *** Traverse key and value - for key, value in dictionary.items()
@@ -85,5 +88,8 @@ od -t d4 - display 4 bytes integer
 *** tmux ls                         List sessions
 *** tmux attach -t <session>        Attach to session
 *** tmux kill-session -t <session>  Kill session
+* TIG
+bind status <F4> !git difftool -y %(commit) %(file)
+bind generic <F5> !git difftool -d --no-symlinks %(commit)
 * Valgrind
 ** valgrind --vgdb --vgdb-error=0 <prog>
