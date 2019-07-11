@@ -11,3 +11,4 @@ projectile-bookmarks.eld
 .emacs.desktop.lock
 *.pyc
 .python-environments/*
+elpa
