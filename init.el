@@ -238,6 +238,7 @@ With a prefix argument, use comint-mode."
 ;; HELM
 (use-package helm
   :ensure t)
+(load "~/.emacs.d/setup_helm_gtags.el")
 (use-package helm-ag
   :ensure t)
 (require 'helm-config)
@@ -367,15 +368,6 @@ With a prefix argument, use comint-mode."
           ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
 (setq web-mode-enable-auto-closing t)
 (setq web-mode-enable-auto-quoting t)) ; this fixes the quote problem I mentioned
-
-(use-package ggtags
-  :ensure t
-  :config
-  (add-hook 'c-mode-common-hook
-            (lambda ()
-              (when (derived-mode-p 'c-mode 'c++-mode 'java-mode)
-                (ggtags-mode 1))))
-  )
 
 (use-package smartparens
   :ensure t)
