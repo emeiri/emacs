@@ -39,6 +39,8 @@
 (transient-mark-mode nil)
 (setq compilation-always-kill t)
 
+(require 'misc)
+
 (add-hook 'prog-mode-hook (lambda () (hs-minor-mode 1)))
 
 (setq tramp-default-method "ssh")
