@@ -1,9 +1,14 @@
 (use-package company
-:ensure t
-:config
-(setq company-idle-delay 0)
-(setq company-minimum-prefix-length 3)
-(global-company-mode t))
+  :ensure t
+  :config
+    (setq company-idle-delay 0)
+    (setq company-minimum-prefix-length 3)
+    (global-company-mode t))
+
+(add-to-list 'load-path "~/.emacs.d/company-c-headers/")
+(load "company-c-headers")
+(add-to-list 'company-backends 'company-c-headers)
+(add-to-list 'company-c-headers-path-system "/usr/include/c++/7")
 
 (use-package company-irony
 :ensure t

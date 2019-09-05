@@ -49,9 +49,11 @@ Currently watching
 * TODO list
 ** Quickly switch between header and cpp. Possibly in another windows.
 ** Replace inside pasted block - Casey explains it.
-
 ** Enable auto highlight of current symbol
 
+** Build global with gtags and pygment support as explained by Tuhdo. This will fix gtags references.
+** Investigate company-clang
+** Debug company-c-headers
 * Arguments
 ** Numeric arguments
 *** M-0 to M-9
@@ -104,6 +106,12 @@ Currently watching
 ** C-h b                          List all shortcuts
 ** C-c h m                      Browse man pages
 ** M-y                             Show kill ring
+** GTAGS
+*** C-c g a                     Find functions that current function calls
+*** C-c g l                     List all tags in a project
+*** C-c g P                     Find files in project (similar to helm-projectile)
+*** C-c g r                     Find references to symbol (currently doesn't work)
+*** C-c g s                     Show tag stack
 * Help
 ** C-h P                          Help on packages
 * Macros

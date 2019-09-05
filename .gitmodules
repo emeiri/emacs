@@ -1,0 +1,3 @@
+[submodule "company-c-headers"]
+	path = company-c-headers
+	url = https://github.com/randomphrase/company-c-headers.git
