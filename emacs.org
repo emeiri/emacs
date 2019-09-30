@@ -51,9 +51,13 @@ Currently watching
 ** Replace inside pasted block - Casey explains it.
 ** Enable auto highlight of current symbol
 
-** Build global with gtags and pygment support as explained by Tuhdo. This will fix gtags references.
-** Investigate company-clang
-** Debug company-c-headers
+** Emacs Tutorials
+*** Tuhdo
+**** Build global with gtags and pygment support as explained by Tuhdo. This will fix gtags references.
+**** Investigate company-clang
+**** Semantic auto completion
+**** Semantic parsing doesn't seem to work
+** Read the semantic manual.
 * Arguments
 ** Numeric arguments
 *** M-0 to M-9
