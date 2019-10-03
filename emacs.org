@@ -112,28 +112,21 @@ Currently watching
 ** C-x-e                   Replay macro
 ** C-x C-k space           Macro debugger
 * Marking text
-** C-=                            Expand region
+** C-=                           Expand region
 ** C-M-SPC                       Mark the next sexp
 ** C-M-h                         Mark the current function
 * Movement
-** Fundamental
-*** C-f, C-b, C-n, C-p          Right, left, Down, Up
-** By word
-*** M-b                         Jump word backwards
-*** M-f                         Jump word forward
-** By sentence
-*** M-a                         Start
-*** M-e                         End
-** By s-exp
-*** C-M-f                       Forward
-*** C-M-b                       Backward
-** Scrolling
-*** C-v                         Down
-*** M-v                         Up
-*** C-M-v                       Other window
-** Buffer
-*** ESC-<                       Move to the top of the buffer (beginning-of-buffer). With numeric argument n, move to n/10 of the way from the top. On graphical displays, C-<HOME> does the same.
-*** ESC->                       Move to the bottom of the buffer
+** C-f, C-b, C-n, C-p          Right, left, Down, Up
+** M-b                         Jump word backwards
+** M-f                         Jump word forward
+** M-a                         Move to start of sentence
+** M-e                         Move to end of sentence
+** C-M-b                       Jump by s-exp backward
+** C-M-f                       Jump by s-exp forward
+** C-M-a                       Jump to beginning of function
+** C-M-e                       Jump to end of function
+** C-M-v                       Scroll other window
+** ESC->                       Move to the bottom of the buffer
 ** ALT-g n                      Goto next error
 ** ALT-g p                      Goto previous error
 ** M-g g                        Goto line
