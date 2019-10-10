@@ -153,7 +153,8 @@ With a prefix argument, use comint-mode."
     (".#*" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "*/caffe_pb2.py" "tags")))
  '(package-selected-packages
    (quote
-    (fill-function-arguments beacon undo-tree projectile helm yasnippet company helm-swoop swiper magit treemacs web-mode all-the-icons ztree move-text spaceline realgud dashboard smartscan imenu-anywhere free-keys iy-go-to-char company-anaconda company-quickhelp paredit flycheck-irony company-jedi irony-eldoc company-irony eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers))))
+    (fill-function-arguments beacon undo-tree projectile helm yasnippet company helm-swoop swiper magit treemacs web-mode all-the-icons ztree move-text spaceline realgud dashboard smartscan imenu-anywhere free-keys iy-go-to-char company-anaconda company-quickhelp paredit flycheck-irony company-jedi irony-eldoc company-irony eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers)))
+ '(send-mail-function (quote mailclient-send-it)))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 ;;(load-theme 'darkokai t)
@@ -603,6 +604,33 @@ might be bad."
   (newline-and-indent)
   )
 
+(defun save-all ()
+  "Save all file-visiting buffers without prompting."
+  (interactive)
+  (save-some-buffers t) ;; Do not prompt for confirmation.
+  (message "All buffers saved")
+  )
+
+(defun delete-window-balance ()
+  "Delete window and rebalance the remaining ones."
+  (interactive)
+  (delete-window)
+  (balance-windows))
+
+(defun split-window-below-focus ()
+  "Split window horizontally and move focus to other window."
+  (interactive)
+  (split-window-below)
+  (balance-windows)
+  (other-window 1))
+
+(defun split-window-right-focus ()
+  "Split window vertically and move focus to other window."
+  (interactive)
+  (split-window-right)
+  (balance-windows)
+  (other-window 1))
+
 
 ;; Global key bindings
 (define-key global-map (kbd "RET") 'newline-and-indent)
@@ -619,10 +647,14 @@ might be bad."
 (global-set-key (kbd "M-<up>") 'move-text-up)
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "M-d") 'kill-word)
-(global-set-key (kbd "C-M-d") 'kill-whole-word)
 (global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1)))
-(add-hook 'prog-mode-hook (lambda () (local-set-key (kbd "M-q") #'fill-function-arguments-dwim)))
+(define-key c++-mode-map (kbd "M-q") 'fill-function-arguments-dwim)
 (global-set-key (kbd "M-=") 'er/expand-region)
+(global-set-key (kbd "C-M-d") 'kill-whole-word)
+(global-set-key (kbd "C-0") 'delete-window-balance)
+(global-set-key (kbd "C-1") 'delete-other-windows)
+(global-set-key (kbd "C-2") 'split-window-below-focus)
+(global-set-key (kbd "C-3") 'split-window-right-focus)
 (global-set-key (kbd "C-,") 'pop-global-mark)
 (global-set-key (kbd "C-.") 'helm-imenu-anywhere)
 (global-set-key (kbd "C-S-f") 'helm-projectile-ag)
@@ -645,6 +677,7 @@ might be bad."
 (global-set-key (kbd "C-c @ h") 'hs-hide-block)
 (global-set-key (kbd "C-c @ s") 'hs-show-block)
 (global-set-key (kbd "C-c @ SPC") 'hs-show-all)
+(global-set-key (kbd "C-x s") 'save-all)
 (global-set-key (kbd "C-x <down>") 'pop-global-mark)
 (global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
 (global-set-key [remap forward-word] 'forward-to-word)
