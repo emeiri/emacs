@@ -60,8 +60,9 @@
 With a prefix argument, use comint-mode."
   (interactive "P")
   ;; Do the command without a prompt.
+  (projectile-with-default-dir (projectile-ensure-project (projectile-project-root))
   (save-window-excursion
-    (compile (eval compile-command) (and comint t)))
+    (compile (eval compile-command) (and comint t))))
   ;; Create a compile window of the desired width.
   (pop-to-buffer (get-buffer "*compilation*"))
   (enlarge-window
@@ -198,10 +199,6 @@ With a prefix argument, use comint-mode."
 (setq compilation-skip-threshold 2);                            Skip compilation warnings
 (setq split-height-threshold 0)
 (setq compilation-window-height 10)
-(define-key c-mode-map [C-f9] #'compile) ;; This gives a regular `compile-command' prompt.
-(define-key c++-mode-map [C-f9] #'compile) ;; This gives a regular `compile-command' prompt.
-(define-key c-mode-map [f9]   #'endless/compile-please) ;; This just compiles immediately.
-(define-key c++-mode-map [f9]   #'endless/compile-please) ;; This just compiles immediately.
 
 (defun bury-compile-buffer-if-successful (buffer string)
   "Bury a compilation buffer if succeeded without warnings "
@@ -656,6 +653,7 @@ might be bad."
 (global-set-key (kbd "<f5>") 'switch-to-term)
 ;(global-set-key (kbd "<f6>") 'switch-to-workflow)
 (global-set-key (kbd "<f6>") 'avy-goto-word-1)
+(global-set-key (kbd "<f9>") 'endless/compile-please) ;; This just compiles immediately.
 (global-set-key (kbd "<f12>") 'open-next-line)
 (global-set-key (kbd "M-<down>") 'move-text-down)
 (global-set-key (kbd "M-<up>") 'move-text-up)
@@ -669,6 +667,7 @@ might be bad."
 (define-key c++-mode-map (kbd "M-q") 'fill-function-arguments-dwim)
 (global-set-key (kbd "M-=") 'er/expand-region)
 (global-set-key (kbd "C-M-d") 'kill-whole-word)
+(global-set-key (kbd "C-<f9>") 'compile) ;; This gives a regular `compile-command' prompt.
 (global-set-key (kbd "C-0") 'delete-window-balance)
 (global-set-key (kbd "C-1") 'delete-other-windows)
 (global-set-key (kbd "C-2") 'split-window-below-focus)
@@ -701,7 +700,7 @@ might be bad."
 (global-set-key [remap forward-word] 'forward-to-word)
 
 ;;(require 'ob-shell)
-;;(org-babel-do-load-languages 'org-babel-load-languages '((sh . t )))
+(org-babel-do-load-languages 'org-babel-load-languages '((shell . t )))
 
 (highlight-indentation-mode nil)
 
