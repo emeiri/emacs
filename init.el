@@ -701,6 +701,7 @@ might be bad."
 
 ;;(require 'ob-shell)
 (org-babel-do-load-languages 'org-babel-load-languages '((shell . t )))
+(setq org-confirm-babel-evaluate nil)
 
 (highlight-indentation-mode nil)
 
