@@ -259,18 +259,7 @@ With a prefix argument, use comint-mode."
 (setq projectile-enable-caching t)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
-
-(use-package elpy
-  :ensure t
-  :config
-  (elpy-enable))
-
-; Fixing a key binding bug in elpy
-(define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
-; Fixing another key binding bug in iedit mode
-
-(setq python-shell-interpreter "python"
-      python-shell-interpreter-args "-i")
+(load "~/.emacs.d/init_elpy.el")
 
 ;; All The Icons
 (use-package all-the-icons :ensure t)
