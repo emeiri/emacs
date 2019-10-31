@@ -26,6 +26,7 @@ With a prefix argument, use comint-mode."
     (compile (eval compile-command) (and comint t))))
   ;; Create a compile window of the desired width.
   (pop-to-buffer (get-buffer "*compilation*"))
+  (other-window 1)
   (enlarge-window
    (- (frame-width)
       endless/compile-window-size
@@ -171,8 +172,8 @@ With a prefix argument, use comint-mode."
                       (lambda (buf)
                        ; (bury-buffer buf)
                                         ; (switch-to-prev-buffer (get-buffer-window buf) 'kill)
-                        (ace-window 1)
-                        (delete-other-windows)
+                        (ace-window 0)
+                        (delete-window)
                         (message "Build OK")
                         )
                       buffer)))
