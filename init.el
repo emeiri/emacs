@@ -147,12 +147,12 @@ With a prefix argument, use comint-mode."
 (use-package iedit    ; C-; to edit all occurences of current string
   :ensure t)
 
-;(global-flycheck-mode)
 ;(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
 (use-package flycheck
   :ensure t
   :init
-  (global-flycheck-mode t))
+  (global-flycheck-mode t)
+  (flymake-mode-off))
 
 ;(require 'c-c++-mode)
 (require 'cc-mode)
