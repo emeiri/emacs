@@ -222,9 +222,10 @@ With a prefix argument, use comint-mode."
       helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
       helm-ff-file-name-history-use-recentf t
       helm-echo-input-in-header-line t
-          helm-M-x-fuzzy-match t ;; optional fuzzy matching for helm-M-x
-          helm-buffers-fuzzy-matching t
-          helm-recentf-fuzzy-match    t)
+      helm-M-x-fuzzy-match t ;; optional fuzzy matching for helm-M-x
+      helm-buffers-fuzzy-matching t
+      helm-recentf-fuzzy-match    t
+      helm-move-to-line-cycle-in-source nil)
 (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
 
 
@@ -599,6 +600,9 @@ might be bad."
         (call-interactively #'goto-line))
     (linum-mode -1)))
 
+(defun tl/dired-copy-path-at-point ()
+    (interactive)
+    (dired-copy-filename-as-kill 0))
 
 ;; Global key bindings
 (define-key global-map (kbd "RET") 'newline-and-indent)
@@ -650,12 +654,14 @@ might be bad."
 (global-set-key (kbd "C-c @ @") 'hs-hide-all)
 (global-set-key (kbd "C-c @ h") 'hs-hide-block)
 (global-set-key (kbd "C-c @ s") 'hs-show-block)
+(global-set-key (kbd "C-f") 'isearch-repeat-forward)
 (global-set-key (kbd "C-c @ SPC") 'hs-show-all)
 (global-set-key (kbd "C-x s") 'save-all)
 (global-set-key (kbd "C-x <down>") 'pop-global-mark)
 (global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
 (global-set-key [remap forward-word] 'forward-to-word)
 
+(define-key dired-mode-map (kbd "W") 'tl/dired-copy-path-at-point)
 ;;(require 'ob-shell)
 (org-babel-do-load-languages 'org-babel-load-languages '((shell . t )))
 (setq org-confirm-babel-evaluate nil)
