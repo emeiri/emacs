@@ -399,7 +399,9 @@ With a prefix argument, use comint-mode."
   :config (eyebrowse-mode t))
 
 (use-package magit
-  :ensure t)
+  :ensure t
+  :init
+  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
 
 (use-package paredit
   :ensure t)
