@@ -466,6 +466,8 @@ With a prefix argument, use comint-mode."
 (use-package realgud-ipdb
   :ensure t)
 
+(load "~/.emacs.d/dired.el")
+
 (defun switch-to-workflow()
   (interactive)
   (switch-to-buffer "workflow.org")
