@@ -463,6 +463,9 @@ With a prefix argument, use comint-mode."
 (use-package all-the-icons
   :ensure t)
 
+(use-package realgud-ipdb
+  :ensure t)
+
 (defun switch-to-workflow()
   (interactive)
   (switch-to-buffer "workflow.org")
