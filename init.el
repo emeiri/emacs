@@ -559,8 +559,11 @@ might be bad."
 (defun switch-to-term()
   "Switch to terminal or create if does not exist"
   (interactive)
-  (if (get-buffer "*ansi-term*")
-    (switch-to-buffer "*ansi-term*")
+  ( if (get-buffer "*ansi-term*")
+      ;;  (if (get-buffer "*shell*")
+      (switch-to-buffer "*ansi-term*")
+;;      (switch-to-buffer "*eshell")
+;;    (eshell)))
     (ansi-term "/bin/bash")))
 
 (defun open-next-line()
