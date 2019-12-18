@@ -225,7 +225,11 @@ With a prefix argument, use comint-mode."
       helm-M-x-fuzzy-match t ;; optional fuzzy matching for helm-M-x
       helm-buffers-fuzzy-matching t
       helm-recentf-fuzzy-match    t
-      helm-move-to-line-cycle-in-source nil)
+      helm-move-to-line-cycle-in-source nil
+      helm-split-window-default-side 'below
+      helm-autoresize-mode t
+      helm-autoresize-max-height 25
+      )
 (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
 
 
