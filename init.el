@@ -610,6 +610,71 @@ might be bad."
     (interactive)
     (dired-copy-filename-as-kill 0))
 
+(defun copy-current-filename()
+  "Put the current file name on the clipboard"
+  (interactive)
+  (let ((filename (if (equal major-mode 'dired-mode)
+                      default-directory
+                    (buffer-file-name))))
+    (when filename
+      (with-temp-buffer
+        (insert filename)
+        (clipboard-kill-region (point-min) (point-max)))
+      (message filename))))
+
+(defun eshell-load-bash-aliases ()
+           "Reads bash aliases from Bash and inserts
+    them into the list of eshell aliases."
+           (interactive)
+           (progn
+                   (message "Parsing aliases")
+                   (shell-command "alias" "bash-aliases" "bash-errors")
+                   (switch-to-buffer "bash-aliases")
+                   (replace-string "alias " "")
+                   (goto-char 1)
+                   (replace-string "='" " ")
+                   (goto-char 1)
+                   (replace-string "'\n" "\n")
+                   (goto-char 1)
+                   (let ((alias-name) (command-string) (alias-list))
+                        (while (not (eobp))
+                           (while (not (char-equal (char-after) 32))
+                                  (forward-char 1))
+                               (setq alias-name
+                                       (buffer-substring-no-properties (line-beginning-position) (point)))
+                               (forward-char 1)
+                               (setq command-string
+                                       (buffer-substring-no-properties (point) (line-end-position)))
+                               (setq alias-list (cons (list alias-name command-string) alias-list))
+                               (forward-line 1))
+                        (setq eshell-command-aliases-list alias-list))
+               (if (get-buffer "bash-aliases")(kill-buffer "bash-aliases"))
+               (if (get-buffer "bash-errors")(kill-buffer "bash-errors"))))
+
+(add-hook 'eshell-mode-hook 'eshell-load-bash-aliases)
+
+(defun my-ediff-files ()
+  (interactive)
+  (let ((files (dired-get-marked-files))
+        (wnd (current-window-configuration)))
+    (if (<= (length files) 2)
+        (let ((file1 (car files))
+              (file2 (if (cdr files)
+                         (cadr files)
+                       (read-file-name
+                        "file: "
+                        (dired-dwim-target-directory)))))
+          (if (file-newer-than-file-p file1 file2)
+              (ediff-files file2 file1)
+            (ediff-files file1 file2))
+          (add-hook 'ediff-after-quit-hook-internal
+                    (lambda ()
+                      (setq ediff-after-quit-hook-internal nil)
+                      (set-window-configuration wnd))))
+      (error "no more than 2 files should be marked"))))
+
+
+
 ;; Global key bindings
 (define-key global-map (kbd "RET") 'newline-and-indent)
 (global-set-key [delete] 'delete-char)
