@@ -44,9 +44,9 @@ With a prefix argument, use comint-mode."
 ; MELPA
 (require 'package)
 (setq package-enable-at-startup nil)
-; add MELPA to repository list
-;(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+(setq package-archives '())
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . ("https://stable.melpa.org/packages/")) t)
 (package-initialize)
 
 (unless (package-installed-p 'use-package)
