@@ -33,6 +33,11 @@ With a prefix argument, use comint-mode."
       (window-width))
    'horizontal))
 
+(defun gdb-c()
+  "Debug"
+  (interactive)
+  (projectile-with-default-dir (projectile-ensure-project (projectile-project-root))
+      (realgud:gdb)))
 
 ;; keep a list of recently opened files
 (require 'recentf)
