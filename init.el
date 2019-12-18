@@ -272,9 +272,6 @@ With a prefix argument, use comint-mode."
 
 (load "~/.emacs.d/init_elpy.el")
 
-;; All The Icons
-(use-package all-the-icons :ensure t)
-
 ;; NeoTree
 (use-package neotree
   :ensure t
