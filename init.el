@@ -121,7 +121,10 @@ With a prefix argument, use comint-mode."
     (".#*" "*.o" "*~" "*.bin" "*.lbin" "*.so" "*.a" "*.ln" "*.blg" "*.bbl" "*.elc" "*.lof" "*.glo" "*.idx" "*.lot" "*.fmt" "*.tfm" "*.class" "*.fas" "*.lib" "*.mem" "*.x86f" "*.sparcf" "*.dfsl" "*.pfsl" "*.d64fsl" "*.p64fsl" "*.lx64fsl" "*.lx32fsl" "*.dx64fsl" "*.dx32fsl" "*.fx64fsl" "*.fx32fsl" "*.sx64fsl" "*.sx32fsl" "*.wx64fsl" "*.wx32fsl" "*.fasl" "*.ufsl" "*.fsl" "*.dxl" "*.lo" "*.la" "*.gmo" "*.mo" "*.toc" "*.aux" "*.cp" "*.fn" "*.ky" "*.pg" "*.tp" "*.vr" "*.cps" "*.fns" "*.kys" "*.pgs" "*.tps" "*.vrs" "*.pyc" "*.pyo" "*/caffe_pb2.py" "tags")))
  '(package-selected-packages
    (quote
-    (helm-gtags dumb-jump fill-function-arguments beacon undo-tree projectile helm yasnippet company helm-swoop swiper magit treemacs web-mode all-the-icons ztree move-text spaceline realgud dashboard smartscan imenu-anywhere free-keys iy-go-to-char company-anaconda company-quickhelp paredit flycheck-irony company-jedi irony-eldoc company-irony eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers)))
+    (dired-subtree dired-narrow all-the-icons-dired ccls helm-gtags dumb-jump fill-function-arguments beacon undo-tree projectile helm yasnippet company helm-swoop swiper magit treemacs web-mode all-the-icons ztree move-text spaceline realgud dashboard smartscan imenu-anywhere free-keys iy-go-to-char company-anaconda company-quickhelp paredit flycheck-irony company-jedi irony-eldoc company-irony eyebrowse babel git-gutter pcre2el dired+ treemacs-projectile smartparens ggtags expand-region hungry-delete jedi zenburn-theme flx-ido dash-functional yasnippet-snippets yasnippet-classic-snippets which-key use-package try tabbar-ruler solarized-theme org-bullets neotree magit-gh-pulls iedit helm-projectile helm-c-yasnippet helm-ag frame-tabs flycheck elpy doom-themes counsel autopair auto-complete-c-headers ag ace-window ac-c-headers)))
+ '(safe-local-variable-values
+   (quote
+    ((company-clang-arguments "-I/home/emeiri/projects/ncf/include" "-I/home/emeiri/projects/ncf/kernels/include"))))
  '(send-mail-function (quote mailclient-send-it)))
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
@@ -707,8 +710,8 @@ might be bad."
 (global-set-key (kbd "M-g ,") 'dumb-jump-back)
 (global-set-key (kbd "M-g q") 'dumb-jump-quick-look)
 (global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1)))
-(define-key c++-mode-map (kbd "M-q") 'fill-function-arguments-dwim)
 (global-set-key (kbd "M-=") 'er/expand-region)
+(global-set-key (kbd "C-=") 'er/mark-symbol)
 (global-set-key (kbd "C-M-d") 'kill-whole-word)
 (global-set-key (kbd "C-<f9>") 'compile) ;; This gives a regular `compile-command' prompt.
 (global-set-key (kbd "C-0") 'delete-window-balance)
@@ -743,7 +746,50 @@ might be bad."
 (global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
 (global-set-key [remap forward-word] 'forward-to-word)
 
-(define-key dired-mode-map (kbd "W") 'tl/dired-copy-path-at-point)
+
+(defun run_kfc()
+  (interactive)
+  (let ((insert-default-directory t))
+    (let ((runfile (read-file-name "KFC runfile:")))
+      (message "KFC runfile: %s" runfile)
+      (message "%s " ((projectile-project-root) "/")
+     )
+    )
+    )
+  )
+
+(defun run_shell()
+  (interactive)
+(let ((process-environment
+       `(,(concat "LD_LIBRARY_PATH=.:/opt/intel/mkl_nightly_2017_20160727_lnx/compiler/lib/intel64:/opt/intel/mkl_nightly_2017_20160727_lnx/mkl/lib/intel64:/opt/intel/icc-latest/lib_lin")
+         ,@process-environment)))
+  (shell)))
+
+
+(defun run_python()
+  (interactive)
+  (elpy-shell-send-region-or-buffer)
+  )
+(define-key c++-mode-map (kbd "M-q") 'fill-function-arguments-dwim)
+(define-key c++-mode-map (kbd "C-<f5>") 'gdb-c)
+
+(define-key python-mode-map (kbd "<f5>") 'elpy-pdb-debug-buffer)
+(define-key python-mode-map (kbd "S-<f5>") 'elpy-shell-kill)
+(define-key python-mode-map (kbd "<f9>") 'elpy-pdb-toggle-breakpoint-at-point)
+(define-key python-mode-map (kbd "C-<f5>") 'run_python)
 ;;(require 'ob-shell)
 (org-babel-do-load-languages 'org-babel-load-languages '((shell . t )))
 (setq org-confirm-babel-evaluate nil)
+
+
+(setq
+ python-shell-interpreter "ipython"
+ python-shell-interpreter-args "--colors=Linux --profile=default"
+ python-shell-prompt-regexp "In \\[[0-9]+\\]: "
+ python-shell-prompt-output-regexp "Out\\[[0-9]+\\]: "
+ python-shell-completion-setup-code
+ "from IPython.core.completerlib import module_completion"
+ python-shell-completion-module-string-code
+ "';'.join(module_completion('''%s'''))\n"
+ python-shell-completion-string-code
+ "';'.join(get_ipython().Completer.all_completions('''%s'''))\n")
