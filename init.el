@@ -221,7 +221,7 @@ With a prefix argument, use comint-mode."
   (setq helm-google-suggest-use-curl-p t))
 (defalias 'list-buffers 'helm-buffers-list)
 
-(setq helm-split-window-inside-p           t ; open helm buffer inside current window, not occupy whole other window
+(setq helm-split-window-inside-p            nil ; open helm buffer inside current window, not occupy whole other window
       helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
       helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
       helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
@@ -234,6 +234,7 @@ With a prefix argument, use comint-mode."
       helm-split-window-default-side 'below
       helm-autoresize-mode t
       helm-autoresize-max-height 25
+      helm-buffer-max-length 60
       )
 (add-to-list 'helm-sources-using-default-as-input 'helm-source-man-pages)
 
