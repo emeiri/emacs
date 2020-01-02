@@ -158,5 +158,10 @@ Search
 ** M-p                            Load previous search string
 ** C-;                             iedit-mode
 ** C-'                             Show only selected lines in iedit-mode
+* Shell command
+** Setting the path
+(setenv "PATH" (concat (getenv "PATH") ":" (expand-file-name "~/.cargo/bin")))
+(setq exec-path (append exec-path (list (expand-file-name "~/.cargo/bin"))))
+
 * Window
 ** C-x o                Select another window (other-window).

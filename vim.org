@@ -1,0 +1,3 @@
+:tabe - create tab
+:tabm [num] - moves a tab
+:vs - vertical split
