@@ -690,7 +690,13 @@ might be bad."
                       (set-window-configuration wnd))))
       (error "no more than 2 files should be marked"))))
 
-
+(defun xah-pop-local-mark-ring ()
+  "Move cursor to last mark position of current buffer.
+Call this repeatedly will cycle all positions in `mark-ring'.
+URL `http://ergoemacs.org/emacs/emacs_jump_to_previous_position.html'
+Version 2016-04-04"
+  (interactive)
+  (set-mark-command t))
 
 ;; Global key bindings
 (define-key global-map (kbd "RET") 'newline-and-indent)
@@ -721,7 +727,8 @@ might be bad."
 (global-set-key (kbd "C-1") 'delete-other-windows)
 (global-set-key (kbd "C-2") 'split-window-below-focus)
 (global-set-key (kbd "C-3") 'split-window-right-focus)
-(global-set-key (kbd "C-,") 'pop-global-mark)
+(global-set-key (kbd "C-,") 'xah-pop-local-mark-ring)
+(global-set-key (kbd "C-<") 'pop-global-mark)
 (global-set-key (kbd "C-.") 'helm-imenu-anywhere)
 (global-set-key (kbd "C-S-f") 'helm-projectile-ag)
 ;(global-set-key (kbd "<C-return>" 'open-line-below)
