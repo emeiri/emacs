@@ -38,3 +38,5 @@
 (setq compilation-always-kill t)
 (setq tramp-default-method "ssh")
 ;(highlight-indentation-mode nil)
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+(defalias 'yes-or-no-p 'y-or-n-p)

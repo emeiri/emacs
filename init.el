@@ -46,12 +46,6 @@ With a prefix argument, use comint-mode."
 (require 'recentf)
 (recentf-mode 1)
 
-; defaliases
-(defalias 'yes-or-no-p 'y-or-n-p)
-
-
-(global-set-key (kbd "M-o") 'ace-window)
-
 ;;(load "~/.emacs.d/counsel.el")
 
 
@@ -146,10 +140,6 @@ With a prefix argument, use comint-mode."
 (load "~/.emacs.d/setup_helm_gtags.el")
 (require 'helm-config)
 (helm-mode 1)
-(global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-set-key (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x b") 'helm-mini)
 (global-unset-key (kbd "C-x c"))
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action) ; rebind tab to run persistent action
 (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action) ; make TAB work in terminal
