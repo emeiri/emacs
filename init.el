@@ -1,6 +1,9 @@
-;;;; General
-; General
+;;; Commentary:
+                                        ; General
+;;; Code:
 (load "~/.emacs.d/init_flags.el")
+(load "~/.emacs.d/init_melpa.el")
+(load "~/.emacs.d/init_packages.el")
 
 (require 'misc)
 
@@ -46,66 +49,11 @@ With a prefix argument, use comint-mode."
 ; defaliases
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-; MELPA
-(require 'package)
-(setq package-enable-at-startup nil)
-(setq package-archives '())
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives '("melpa-stable" . ("https://stable.melpa.org/packages/")) t)
-(package-initialize)
-
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-; Packages
-;(use-package doom-themes
-;  :ensure t
-;  :config
-                                        ;  (load-theme 'doom-one t))
-(use-package zenburn-theme
-  :ensure t
-  :config (load-theme 'zenburn t))
-
-(use-package try
-  :ensure t)
-
-(use-package which-key
-  :ensure t
-  :config
-  (which-key-mode t))
-
-(use-package org-bullets
-  :ensure t
-  :config
-  (add-hook 'org-mode-hook (lambda() (org-bullets-mode 1))))
-
-;(use-package tabbar
-;  :ensure t
-;  :config (tabbar-mode 1))
-
-(use-package ace-window
-  :ensure t
-  :init
-  (progn
-    (global-set-key [remap other-window] 'ace-window)
-    (custom-set-faces
-     '(aw-leading-char-face
-       ((t (:inherit ace-jump-face-foreground :height 3.0)))))
-    ))
 
 (global-set-key (kbd "M-o") 'ace-window)
 
 ;;(load "~/.emacs.d/counsel.el")
 
-(use-package swiper-helm
-  :ensure t
-  :config
-  (progn
-  ;  (ivy-mode 1)
-  ;  (setq ivy-use-virtual-buffers t)
-    (global-set-key "\C-s" 'swiper-helm)
-    ))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -152,15 +100,6 @@ With a prefix argument, use comint-mode."
 ;(setq tabbar-ruler-popup-scrollbar t)  ; show scroll-bar on mouse-move
 ;(require 'tabbar-ruler)
 
-(use-package iedit    ; C-; to edit all occurences of current string
-  :ensure t)
-
-;(setq-default flycheck-disabled-checkers '(emacs-lisp-checkdoc))
-(use-package flycheck
-  :ensure t
-  :init
-  (global-flycheck-mode t)
-  (flymake-mode-off))
 
 ;(require 'c-c++-mode)
 (require 'cc-mode)
@@ -204,11 +143,7 @@ With a prefix argument, use comint-mode."
 ;(ede-cpp-root-project "ogldev" :file "/home/emeiri/ogldev/tutorial53/tutorial53.cpp" :include-path '("/home/emeiri/ogldev/"))
 
 ;; HELM
-(use-package helm
-  :ensure t)
 (load "~/.emacs.d/setup_helm_gtags.el")
-(use-package helm-ag
-  :ensure t)
 (require 'helm-config)
 (helm-mode 1)
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
@@ -259,14 +194,6 @@ With a prefix argument, use comint-mode."
 (helm-autoresize-mode 1)
 
 ;; PROJECTILE
-(use-package projectile
-  :ensure t
-  :config
-  (projectile-mode))
-(use-package helm-projectile
-  :ensure t
-  :config
-  (helm-projectile-on))
 (setq projectile-completion-system 'helm)
 (setq projectile-project-search-path '("~/"))
 (setq projectile-switch-project-action 'helm-projectile)
@@ -276,23 +203,7 @@ With a prefix argument, use comint-mode."
 
 (load "~/.emacs.d/init_elpy.el")
 
-;; NeoTree
-(use-package neotree
-  :ensure t
-  :init
-  (setq neo-theme (if (display-graphic-p) 'icons 'arrow)))
-
 (put 'downcase-region 'disabled nil)
-
-(use-package avy
-  :ensure t
-  :bind ("M-s" . avy-goto-word-1))
-
-(use-package jedi
-  :ensure t
-  :init
-  (add-hook 'python-mode-hook 'jedi:setup))
-;  (add-hook 'python-mode-hook 'jedi:ac-setup))
 
 (defun company-jedi-setup ()
   (add-to-list 'company-backends 'company-jedi))
@@ -301,177 +212,9 @@ With a prefix argument, use comint-mode."
 (setq jedi:setup-keys t)
 (setq jedi:complete-on-dot t)
 
-(use-package undo-tree
-:ensure t
-  :init
-  (global-undo-tree-mode))
-
-(use-package beacon
-:ensure ;TODO:
-:config
-(beacon-mode 1))
-
-(use-package hungry-delete
-  :ensure t
-  :config
-  (hungry-delete-mode))
-
-(use-package expand-region
-  :ensure t)
-
-(use-package web-mode
-  :ensure t
-  :config
-  (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
-  (setq web-mode-ac-sources-alist
-        '(("css" . (ac-source-css-property))
-          ("html" . (ac-source-words-in-buffer ac-source-abbrev))))
 (setq web-mode-enable-auto-closing t)
-(setq web-mode-enable-auto-quoting t)) ; this fixes the quote problem I mentioned
+(setq web-mode-enable-auto-quoting t) ; this fixes the quote problem I mentioned
 
-(use-package smartparens
-  :ensure t)
-
-(use-package treemacs
-  :ensure t
-  :defer t
-  :init
-  (with-eval-after-load 'winum
-    (define-key winum-keymap (kbd "F12") #'treemacs-select-window))
-  :config
-  (progn
-    (setq treemacs-collapse-dirs              (if (executable-find "python") 3 0)
-          treemacs-deferred-git-apply-delay   0.5
-          treemacs-display-in-side-window     t
-          treemacs-file-event-delay           5000
-          treemacs-file-follow-delay          0.2
-          treemacs-follow-after-init          t
-          treemacs-follow-recenter-distance   0.1
-          treemacs-git-command-pipe           ""
-          treemacs-goto-tag-strategy          'refetch-index
-          treemacs-indentation                2
-          treemacs-indentation-string         " "
-          treemacs-is-never-other-window      nil
-          treemacs-max-git-entries            5000
-          treemacs-no-png-images              nil
-          treemacs-no-delete-other-windows    t
-          treemacs-project-follow-cleanup     nil
-          treemacs-persist-file               (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
-          treemacs-recenter-after-file-follow nil
-          treemacs-recenter-after-tag-follow  nil
-          treemacs-show-cursor                nil
-          treemacs-show-hidden-files          t
-          treemacs-silent-filewatch           nil
-          treemacs-silent-refresh             nil
-          treemacs-sorting                    'alphabetic-desc
-          treemacs-space-between-root-nodes   t
-          treemacs-tag-follow-cleanup         t
-          treemacs-tag-follow-delay           1.5
-          treemacs-width                      35)
-
-    ;; The default width and height of the icons is 22 pixels. If you are
-    ;; using a Hi-DPI display, uncomment this to double the icon size.
-    ;;(treemacs-resize-icons 44)
-
-    (treemacs-follow-mode t)
-    (treemacs-filewatch-mode t)
-    (treemacs-fringe-indicator-mode t)
-    (pcase (cons (not (null (executable-find "git")))
-                 (not (null (executable-find "python3"))))
-      (`(t . t)
-       (treemacs-git-mode 'deferred))
-      (`(t . _)
-       (treemacs-git-mode 'simple))))
-  :bind
-  (:map global-map
-        ("M-0"       . treemacs-select-window)
-        ("C-x t 1"   . treemacs-delete-other-windows)
-;        ("<f12>"     . treemacs)
-        ("C-x t B"   . treemacs-bookmark)
-        ("C-x t C-t" . treemacs-find-file)
-        ("C-x t M-t" . treemacs-find-tag)))
-
-(use-package treemacs-projectile
-  :after treemacs projectile
-  :ensure t)
-
-(use-package pcre2el
-  :ensure t
-  :config
-  (pcre-mode))
-
-(use-package git-gutter
-   :ensure t
-   :init (global-git-gutter-mode +1))
-
-(use-package eyebrowse
-  :ensure t
-  :config (eyebrowse-mode t))
-
-(use-package magit
-  :ensure t
-  :init
-  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
-
-(use-package paredit
-  :ensure t)
-
-(use-package iy-go-to-char
-  :ensure t)
-
-(use-package free-keys
-  :ensure t)
-
-(use-package imenu-anywhere
-  :ensure t)
-
-(use-package smartscan
-  :ensure t)
-(smartscan-mode t)
-
-;(use-package dashboard
-;  :ensure t
-;  :config
-;    (dashboard-setup-startup-hook)
-;    (setq dashboard-startup-banner "~/.emacs.d/img/dashLogo.png")
-;    (setq dashboard-items '((recents  . 5) (projects . 5)))
-;    (setq dashboard-banner-logo-title ""))
-
-(use-package realgud
-  :ensure t)
-
-;(use-package spaceline
-;  :ensure t
-;  :config
-;  (require 'spaceline-config)
-;  (setq spaceline-buffer-encoding-abbrev-p nil)
-;  (setq spaceline-line-column-p nil)
-;  (setq spaceline-line-p nil)
-;  (setq powerline-default-separator (quote arrow))
-;  (spaceline-spacemacs-theme))
-
-(use-package move-text
-  :ensure t)
-
-(use-package fill-function-arguments
-  :ensure t)
-
-(use-package dumb-jump
-  :ensure t
-  :config
-  (setq dumb-jump-selector 'helm))
-
-(use-package ztree
-  :ensure t)
-
-(use-package all-the-icons
-  :ensure t)
-
-(use-package realgud-ipdb
-  :ensure t)
-
-(use-package ob-async
-  :ensure t)
 
 (load "~/.emacs.d/dired.el")
 
@@ -699,63 +442,7 @@ Version 2016-04-04"
   (set-mark-command t))
 
 ;; Global key bindings
-(define-key global-map (kbd "RET") 'newline-and-indent)
-(global-set-key [delete] 'delete-char)
-(global-set-key (kbd "<f1>") 'list-buffers)
-(global-set-key (kbd "<f2>") 'helm-projectile-find-file-dwim)
-(global-set-key (kbd "<f3>") 'helm-semantic-or-imenu)
-(global-set-key (kbd "<f4>") 'bookmark-jump)
-(global-set-key (kbd "<f5>") 'switch-to-term)
-;(global-set-key (kbd "<f6>") 'switch-to-workflow)
-(global-set-key (kbd "<f6>") 'avy-goto-word-1)
-(global-set-key (kbd "<f9>") 'endless/compile-please) ;; This just compiles immediately.
-(global-set-key (kbd "<f12>") 'open-next-line)
-(global-set-key (kbd "M-<down>") 'move-text-down)
-(global-set-key (kbd "M-<up>") 'move-text-up)
-(global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "M-d") 'kill-word)
-(global-set-key (kbd "M-g g") 'goto-line-show)
-(global-set-key (kbd "M-g j") 'dumb-jump-go)
-(global-set-key (kbd "M-g ,") 'dumb-jump-back)
-(global-set-key (kbd "M-g q") 'dumb-jump-quick-look)
-(global-set-key (kbd "M-j") (lambda () (interactive) (join-line -1)))
-(global-set-key (kbd "M-=") 'er/expand-region)
-(global-set-key (kbd "C-=") 'er/mark-symbol)
-(global-set-key (kbd "C-M-d") 'kill-whole-word)
-(global-set-key (kbd "C-<f9>") 'compile) ;; This gives a regular `compile-command' prompt.
-(global-set-key (kbd "C-0") 'delete-window-balance)
-(global-set-key (kbd "C-1") 'delete-other-windows)
-(global-set-key (kbd "C-2") 'split-window-below-focus)
-(global-set-key (kbd "C-3") 'split-window-right-focus)
-(global-set-key (kbd "C-,") 'xah-pop-local-mark-ring)
-(global-set-key (kbd "C-<") 'pop-global-mark)
-(global-set-key (kbd "C-.") 'helm-imenu-anywhere)
-(global-set-key (kbd "C-S-f") 'helm-projectile-ag)
-;(global-set-key (kbd "<C-return>" 'open-line-below)
-;(global-set-key (kbd "<C-S-RET>") 'open-line-above)
-(global-set-key (kbd "C-<f1>") 'toggle-narrow-exand)
-(global-set-key (kbd "C-<f3>") 'helm-gtags-select)
-(global-set-key (kbd "C-<up>") (lambda ()
-                                 (interactive)
-                                 (ignore-errors (next-line -5))))
-(global-set-key (kbd "C-<down>") (lambda ()
-                                 (interactive)
-                                 (ignore-errors (next-line 5))))
-(global-set-key (kbd "C-0") 'delete-window)
-(global-set-key (kbd "C-c f") 'iy-go-to-char)
-(global-set-key (kbd "C-l") 'copy-whole-line)
-(global-set-key (kbd "C-c l") 'recenter-top-bottom)
-(define-key global-map (kbd "C-c o") 'iedit-mode)
-(global-set-key (kbd "C-c @ @") 'hs-hide-all)
-(global-set-key (kbd "C-c @ h") 'hs-hide-block)
-(global-set-key (kbd "C-c @ s") 'hs-show-block)
-(global-set-key (kbd "C-f") 'isearch-repeat-forward)
-(global-set-key (kbd "C-c @ SPC") 'hs-show-all)
-(global-set-key (kbd "C-x s") 'save-all)
-(global-set-key (kbd "C-x <down>") 'pop-global-mark)
-(global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
-(global-set-key [remap forward-word] 'forward-to-word)
-
+(load "~/.emacs.d/init_global_keys.el")
 
 (defun run_kfc()
   (interactive)
