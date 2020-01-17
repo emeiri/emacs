@@ -25,7 +25,6 @@
 
 ;;(load "~/.emacs.d/counsel.el")
 
-+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
