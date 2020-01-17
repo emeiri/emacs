@@ -82,12 +82,6 @@
   :ensure t
   :bind ("M-s" . avy-goto-word-1))
 
-(use-package jedi
-  :ensure t
-  :init
-  (add-hook 'python-mode-hook 'jedi:setup))
-;  (add-hook 'python-mode-hook 'jedi:ac-setup))
-
 (use-package undo-tree
 :ensure t
   :init

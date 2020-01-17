@@ -7,11 +7,15 @@
 (load "~/.emacs.d/init_funcs.el")
 
 (require 'misc)
-;; keep a list of recently opened files
 (require 'recentf)
 (recentf-mode 1)
 
-(add-hook 'prog-mode-hook (lambda () (hs-minor-mode 1)))
+(require 'cc-mode)
+(setq c-basic-offset 4)
+(setq compilation-scroll-output t)
+(setq compilation-skip-threshold 2);                            Skip compilation warnings
+(setq split-height-threshold 0)
+(setq compilation-window-height 10)
 
 (defvar my-term-shell "/bin/bash")
 (defadvice ansi-term (before force-bash)
@@ -55,7 +59,6 @@
  ;; If there is more than one, they won't work right.
  '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))
 
-
 ;; Choose autocomplete or company
 ;;(load "~/.emacs.d/ac.el")
 (load "~/.emacs.d/company.el")
@@ -70,17 +73,7 @@
 ;(setq tabbar-ruler-popup-scrollbar t)  ; show scroll-bar on mouse-move
 ;(require 'tabbar-ruler)
 
-
 ;(require 'c-c++-mode)
-(require 'cc-mode)
-(setq c-basic-offset 4)
-(setq compilation-scroll-output t)
-(setq compilation-skip-threshold 2);                            Skip compilation warnings
-(setq split-height-threshold 0)
-(setq compilation-window-height 10)
-
-
-(add-hook 'compilation-finish-functions 'bury-compile-buffer-if-successful)
 
 (require 'semantic)
 (global-semanticdb-minor-mode 1)
@@ -92,8 +85,6 @@
 
 (defun my::add-semantic-to-ac()
   (add-to-list 'ac-sources 'ac-source-semantic))
-
-(add-hook 'c-mode-common-hook 'my::add-semantic-to-ac)
 
 (global-ede-mode 1)
 ;(ede-cpp-root-project "ogldev" :file "/home/emeiri/ogldev/tutorial53/tutorial53.cpp" :include-path '("/home/emeiri/ogldev/"))
@@ -113,23 +104,10 @@
 
 (put 'downcase-region 'disabled nil)
 
-(defun company-jedi-setup ()
-  (add-to-list 'company-backends 'company-jedi))
-(add-hook 'python-mode-hook 'company-jedi-setup)
-
-(setq jedi:setup-keys t)
-(setq jedi:complete-on-dot t)
-
 (setq web-mode-enable-auto-closing t)
 (setq web-mode-enable-auto-quoting t) ; this fixes the quote problem I mentioned
 
 (load "~/.emacs.d/dired.el")
-
-;; Various superfluous white-space. Just say no.
-(add-hook 'before-save-hook 'cleanup-buffer-safe)
-
-
-(add-hook 'eshell-mode-hook 'eshell-load-bash-aliases)
 
 (define-key c++-mode-map (kbd "M-q") 'fill-function-arguments-dwim)
 (define-key c++-mode-map (kbd "C-<f5>") 'gdb-c)
@@ -139,3 +117,10 @@
 (setq org-confirm-babel-evaluate nil)
 
 (load "~/.emacs.d/init_python.el")
+
+(add-hook 'prog-mode-hook (lambda () (hs-minor-mode 1)))
+(add-hook 'compilation-finish-functions 'bury-compile-buffer-if-successful)
+(add-hook 'c-mode-common-hook 'my::add-semantic-to-ac)
+;; Various superfluous white-space. Just say no.
+(add-hook 'before-save-hook 'cleanup-buffer-safe)
+(add-hook 'eshell-mode-hook 'eshell-load-bash-aliases)
