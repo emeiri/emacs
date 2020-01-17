@@ -5,6 +5,14 @@
 (setq company-minimum-prefix-length 3)
 (global-company-mode t))
 
+(setq company-backends (delete 'company-semantic company-backends))
+;(define-key c-mode-map  [(C-tab)] 'company-gtags)
+;(define-key c++-mode-map  [(C-tab)] 'company-gtags)
+
+;(define-key c-mode-map  [(tab)] 'indent-region)
+;(define-key c++-mode-map  [(tab)] 'indent-region)
+
+
 (use-package company-irony
 :ensure t
 :config

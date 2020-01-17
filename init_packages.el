@@ -257,3 +257,6 @@
 
 (use-package ob-async
   :ensure t)
+
+(use-package rtags
+  :ensure t)
