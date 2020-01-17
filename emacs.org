@@ -104,6 +104,9 @@ Currently watching
 ** C-h b                          List all shortcuts
 ** C-c h m                      Browse man pages
 ** M-y                             Show kill ring
+** C-SPACE     Mark buffer
+** M-m         Toggle all mark
+** M-S-D       Kill marked buffers
 * Help
 ** C-h P                          Help on packages
 * Macros

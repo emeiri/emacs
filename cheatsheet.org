@@ -1,8 +1,20 @@
 * Bash
+** Special params
+*** $! - exit value of previous command
 ** Loop
 for i in {1..5}
 do
    echo "Welcome $i times"
+done
+** Loop with variable
+START=1
+END=5
+echo "Countdown"
+
+for (( c=$START; c<=$END; c++ ))
+do
+        echo -n "$c "
+        sleep 1
 done
 * objcopy
 ** --only-keep-debug <source binary> <target debug file>
