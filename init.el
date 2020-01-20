@@ -16,6 +16,8 @@
 (setq compilation-skip-threshold 2);                            Skip compilation warnings
 (setq split-height-threshold 0)
 (setq compilation-window-height 10)
+(define-key c++-mode-map (kbd "M-q") 'fill-function-arguments-dwim)
+(define-key c++-mode-map (kbd "C-<f5>") 'gdb-c)
 
 (defvar my-term-shell "/bin/bash")
 (defadvice ansi-term (before force-bash)
@@ -109,14 +111,12 @@
 
 (load "~/.emacs.d/dired.el")
 
-(define-key c++-mode-map (kbd "M-q") 'fill-function-arguments-dwim)
-(define-key c++-mode-map (kbd "C-<f5>") 'gdb-c)
-
 ;;(require 'ob-shell)
 (org-babel-do-load-languages 'org-babel-load-languages '((shell . t )))
 (setq org-confirm-babel-evaluate nil)
 
 (load "~/.emacs.d/init_python.el")
+(load "~/.emacs.d/rtags-2.37.el")
 
 (add-hook 'prog-mode-hook (lambda () (hs-minor-mode 1)))
 (add-hook 'compilation-finish-functions 'bury-compile-buffer-if-successful)

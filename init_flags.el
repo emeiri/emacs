@@ -38,6 +38,6 @@
 (setq compilation-always-kill t)
 (setq tramp-default-method "ssh")
 ;(highlight-indentation-mode nil)
-(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.2")
 (defalias 'yes-or-no-p 'y-or-n-p)
 (string-match "\\<XFT\\>" system-configuration-features)
