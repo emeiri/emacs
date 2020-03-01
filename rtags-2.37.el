@@ -1193,7 +1193,7 @@ Function based on org-babel-tramp-handle-call-process-region"
         (write-region start end tmpfile nil 'nomsg)
         (when delete (delete-region start end))
         (unwind-protect
-            ;;	(apply 'call-process program tmpfile buffer display args)
+            ;;  (apply 'call-process program tmpfile buffer display args)
             ;; bug in tramp
             (apply 'process-file program tmpfile buffer display args)
           (delete-file tmpfile)))
@@ -5414,7 +5414,8 @@ the user enter missing field manually."
                 "[ -e \"$FILE\" ] && ARGS=\"$ARGS -C -\"\n"
                 "ARGS=\"$ARGS $URL\"\n"
                 "echo \"Downloading rtags from $URL\"\n"
-                "if ! curl $ARGS; then\n"
+                "echo $ARGS\n"
+                "if ! wget $URL; then\n"
                 "    echo \"Failed to download $FILE from $URL\" >&2\n"
                 "    exit 1\n"
                 "fi\n"
