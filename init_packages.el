@@ -3,13 +3,18 @@
   (package-install 'use-package))
 
 ; Packages
-;(use-package doom-themes
-;  :ensure t
-;  :config
-                                        ;  (load-theme 'doom-one t))
-(use-package zenburn-theme
+(use-package doom-themes
   :ensure t
-  :config (load-theme 'zenburn t))
+  :config
+  (load-theme 'doom-acario-dark))
+
+(use-package doom-modeline
+  :ensure t
+  :config
+  :hook (after-init . doom-modeline-mode))
+;(use-package zenburn-theme
+;  :ensure t
+;  :config (load-theme 'zenburn t))
 
 (use-package try
   :ensure t)
